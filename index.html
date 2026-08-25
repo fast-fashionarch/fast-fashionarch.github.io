@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
@@ -15,24 +15,33 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: #f5f5f5;
+      background: #f5f7fb;
       color: #111;
     }
 
+    /* =========================
+       NAVIGATION
+    ========================== */
+
     header {
-      background: #111;
-      color: white;
-      padding: 22px 6%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+
+      padding: 18px 6%;
+
+      background: rgba(5, 15, 35, 0.94);
+      backdrop-filter: blur(14px);
+
+      color: white;
     }
 
     .logo {
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 900;
       letter-spacing: 2px;
     }
@@ -40,71 +49,223 @@
     nav a {
       color: white;
       text-decoration: none;
-      margin-left: 20px;
       font-size: 14px;
+      font-weight: bold;
     }
 
+    /* =========================
+       ANIMIERTER HERO
+    ========================== */
+
     .hero {
-      min-height: 430px;
+      position: relative;
+      min-height: 500px;
+      overflow: hidden;
+
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+
       text-align: center;
-      padding: 60px 20px;
-      background:
-        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
-        url("https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1600&q=80")
-        center/cover;
+
       color: white;
+      background: #061a42;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+
+      width: 700px;
+      height: 700px;
+
+      border-radius: 45% 55% 60% 40%;
+
+      filter: blur(8px);
+      opacity: .9;
+    }
+
+    .hero::before {
+      background:
+        radial-gradient(circle at 30% 30%, white 0%, transparent 24%),
+        radial-gradient(circle at 70% 60%, #1597ff 0%, transparent 45%),
+        #08449b;
+
+      animation: blueMove 8s ease-in-out infinite alternate;
+    }
+
+    .hero::after {
+      background:
+        radial-gradient(circle at 60% 30%, white 0%, transparent 20%),
+        radial-gradient(circle at 30% 70%, #006cff 0%, transparent 48%),
+        #0a4db5;
+
+      animation: whiteMove 10s ease-in-out infinite alternate;
+
+      mix-blend-mode: screen;
+    }
+
+    @keyframes blueMove {
+      0% {
+        transform: translate(-35%, -15%) rotate(0deg) scale(1);
+      }
+
+      50% {
+        transform: translate(20%, 10%) rotate(90deg) scale(1.15);
+      }
+
+      100% {
+        transform: translate(45%, -20%) rotate(180deg) scale(.9);
+      }
+    }
+
+    @keyframes whiteMove {
+      0% {
+        transform: translate(40%, 15%) rotate(0deg) scale(1);
+      }
+
+      50% {
+        transform: translate(-20%, -10%) rotate(-90deg) scale(1.2);
+      }
+
+      100% {
+        transform: translate(-45%, 20%) rotate(-180deg) scale(.95);
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+
+      padding: 30px;
+
+      text-shadow: 0 5px 25px rgba(0,0,0,.35);
     }
 
     .hero h1 {
-      font-size: clamp(45px, 9vw, 90px);
+      font-size: clamp(50px, 10vw, 100px);
       font-weight: 900;
-      letter-spacing: -4px;
+      letter-spacing: -5px;
     }
 
     .hero p {
       margin-top: 15px;
-      font-size: 18px;
+      font-size: 20px;
+      font-weight: bold;
     }
 
+    .hero-button {
+      display: inline-block;
+
+      margin-top: 30px;
+      padding: 15px 30px;
+
+      border-radius: 30px;
+
+      background: white;
+      color: #0754b8;
+
+      text-decoration: none;
+      font-weight: bold;
+
+      transition: .2s;
+    }
+
+    .hero-button:hover {
+      transform: scale(1.05);
+    }
+
+    /* =========================
+       SHOP
+    ========================== */
+
     .shop {
-      padding: 55px 6%;
-      max-width: 1400px;
+      max-width: 1450px;
       margin: auto;
+
+      padding: 55px 6%;
     }
 
     .section-title {
-      font-size: 34px;
-      margin-bottom: 30px;
+      font-size: 38px;
       font-weight: 900;
+      margin-bottom: 25px;
     }
+
+    /* =========================
+       SUCHE & FILTER
+    ========================== */
+
+    .controls {
+      display: grid;
+
+      grid-template-columns:
+        minmax(200px, 2fr)
+        minmax(150px, 1fr)
+        minmax(150px, 1fr);
+
+      gap: 12px;
+
+      margin-bottom: 30px;
+    }
+
+    .controls input,
+    .controls select {
+      width: 100%;
+
+      padding: 14px;
+
+      border: 1px solid #ddd;
+      border-radius: 12px;
+
+      background: white;
+
+      font-size: 15px;
+    }
+
+    /* =========================
+       PRODUKTE
+    ========================== */
 
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+
+      grid-template-columns:
+        repeat(auto-fill, minmax(240px, 1fr));
+
       gap: 25px;
     }
 
     .product {
       background: white;
-      border-radius: 18px;
+
+      border-radius: 20px;
+
       overflow: hidden;
-      box-shadow: 0 8px 25px rgba(0,0,0,.08);
-      transition: transform .2s ease, box-shadow .2s ease;
+
+      box-shadow:
+        0 8px 30px rgba(0,0,0,.08);
+
+      transition: .25s;
     }
 
     .product:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0,0,0,.14);
+      transform: translateY(-6px);
+
+      box-shadow:
+        0 15px 40px rgba(0,0,0,.15);
     }
 
-    .product img {
+    .product-image {
       width: 100%;
-      height: 260px;
+      height: 270px;
+
       object-fit: cover;
+
       display: block;
+
+      background: #e9eef5;
     }
 
     .product-info {
@@ -112,85 +273,178 @@
     }
 
     .brand {
-      font-size: 12px;
+      font-size: 11px;
+
       color: #777;
+
       text-transform: uppercase;
-      letter-spacing: 1px;
+
+      letter-spacing: 1.2px;
     }
 
     .product h3 {
       margin: 7px 0;
+
       font-size: 20px;
     }
 
     .price {
       font-size: 19px;
+
       font-weight: bold;
+
       margin: 12px 0;
     }
 
-    label {
+    .size-label {
       display: block;
-      font-size: 13px;
-      font-weight: bold;
+
       margin-bottom: 7px;
+
+      font-size: 13px;
+
+      font-weight: bold;
     }
 
-    select {
+    .size-select {
       width: 100%;
-      padding: 12px;
+
+      padding: 13px;
+
       border: 1px solid #ddd;
-      border-radius: 9px;
+
+      border-radius: 10px;
+
       background: white;
+
       font-size: 15px;
+
       margin-bottom: 12px;
     }
 
     .whatsapp {
       width: 100%;
+
       border: none;
-      border-radius: 9px;
-      padding: 13px;
-      background: #111;
+
+      border-radius: 10px;
+
+      padding: 14px;
+
+      background: #0754b8;
+
       color: white;
-      font-weight: bold;
+
       font-size: 15px;
+
+      font-weight: bold;
+
       cursor: pointer;
+
       transition: .2s;
     }
 
     .whatsapp:hover {
-      background: #333;
+      background: #003d8f;
+
+      transform: translateY(-2px);
     }
 
-    footer {
-      background: #111;
-      color: #aaa;
+    .no-results {
+      display: none;
+
       text-align: center;
-      padding: 30px 20px;
+
+      padding: 50px;
+
+      color: #777;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
       margin-top: 30px;
+
+      padding: 35px 20px;
+
+      background: #061a42;
+
+      color: #cbd5e1;
+
+      text-align: center;
+
       font-size: 13px;
     }
 
-    @media (max-width: 600px) {
-      header {
-        padding: 18px 20px;
-      }
+    /* =========================
+       HANDY
+    ========================== */
 
-      nav a {
-        margin-left: 10px;
+    @media (max-width: 700px) {
+
+      header {
+        padding: 17px 20px;
       }
 
       .hero {
-        min-height: 360px;
+        min-height: 430px;
+      }
+
+      .hero h1 {
+        letter-spacing: -3px;
       }
 
       .shop {
         padding: 40px 20px;
       }
 
-      .product img {
-        height: 230px;
+      .controls {
+        grid-template-columns: 1fr;
+      }
+
+      .products {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+
+        gap: 12px;
+      }
+
+      .product {
+        border-radius: 15px;
+      }
+
+      .product-image {
+        height: 190px;
+      }
+
+      .product-info {
+        padding: 13px;
+      }
+
+      .product h3 {
+        font-size: 16px;
+      }
+
+      .price {
+        font-size: 16px;
+      }
+
+      .whatsapp {
+        font-size: 13px;
+        padding: 12px 7px;
+      }
+    }
+
+    @media (max-width: 400px) {
+
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .product-image {
+        height: 240px;
       }
     }
   </style>
@@ -198,179 +452,823 @@
 
 <body>
 
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
+
   <header>
-    <div class="logo">FASTFASHION</div>
+
+    <div class="logo">
+      FASTFASHION
+    </div>
 
     <nav>
-      <a href="#shop">Sneaker</a>
+      <a href="#shop">
+        SNEAKER
+      </a>
     </nav>
+
   </header>
 
+
+  <!-- =========================
+       HERO
+  ========================== -->
+
   <section class="hero">
-    <div>
-      <h1>FASTFASHION</h1>
-      <p>Dein Style. Deine Sneaker.</p>
+
+    <div class="hero-content">
+
+      <h1>
+        FASTFASHION
+      </h1>
+
+      <p>
+        Dein Style. Deine Sneaker.
+      </p>
+
+      <a
+        href="#shop"
+        class="hero-button">
+
+        Sneaker entdecken
+
+      </a>
+
     </div>
+
   </section>
 
-  <main class="shop" id="shop">
 
-    <h2 class="section-title">Sneaker</h2>
+  <!-- =========================
+       SHOP
+  ========================== -->
 
-    <div class="products">
+  <main
+    class="shop"
+    id="shop">
 
-      <!-- PRODUKT 1 -->
-      <article class="product">
-        <img
-          src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80"
-          alt="Roter Sneaker"
-        >
-
-        <div class="product-info">
-          <span class="brand">Sneaker</span>
-          <h3>Classic Red</h3>
-          <div class="price">99,99 €</div>
-
-          <label for="size1">Größe</label>
-
-          <select id="size1">
-            <option value="">Größe auswählen</option>
-            <option>36</option>
-            <option>37</option>
-            <option>38</option>
-            <option>39</option>
-            <option>40</option>
-            <option>41</option>
-            <option>42</option>
-            <option>43</option>
-            <option>44</option>
-            <option>45</option>
-            <option>46</option>
-          </select>
-
-          <button class="whatsapp"
-            onclick="orderProduct('Classic Red', '99,99 €', 'size1')">
-            Über WhatsApp bestellen
-          </button>
-        </div>
-      </article>
+    <h2 class="section-title">
+      Sneaker
+    </h2>
 
 
-      <!-- PRODUKT 2 -->
-      <article class="product">
-        <img
-          src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=900&q=80"
-          alt="Weißer Sneaker"
-        >
+    <!-- SUCHE & FILTER -->
 
-        <div class="product-info">
-          <span class="brand">Sneaker</span>
-          <h3>White Street</h3>
-          <div class="price">119,99 €</div>
+    <div class="controls">
 
-          <label for="size2">Größe</label>
-
-          <select id="size2">
-            <option value="">Größe auswählen</option>
-            <option>36</option>
-            <option>37</option>
-            <option>38</option>
-            <option>39</option>
-            <option>40</option>
-            <option>41</option>
-            <option>42</option>
-            <option>43</option>
-            <option>44</option>
-            <option>45</option>
-            <option>46</option>
-          </select>
-
-          <button class="whatsapp"
-            onclick="orderProduct('White Street', '119,99 €', 'size2')">
-            Über WhatsApp bestellen
-          </button>
-        </div>
-      </article>
+      <input
+        type="text"
+        id="search"
+        placeholder="Sneaker oder Marke suchen..."
+        oninput="filterProducts()">
 
 
-      <!-- PRODUKT 3 -->
-      <article class="product">
-        <img
-          src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?auto=format&fit=crop&w=900&q=80"
-          alt="Schwarzer Sneaker"
-        >
+      <select
+        id="brandFilter"
+        onchange="filterProducts()">
 
-        <div class="product-info">
-          <span class="brand">Sneaker</span>
-          <h3>Black Premium</h3>
-          <div class="price">129,99 €</div>
+        <option value="">
+          Alle Marken
+        </option>
 
-          <label for="size3">Größe</label>
+      </select>
 
-          <select id="size3">
-            <option value="">Größe auswählen</option>
-            <option>36</option>
-            <option>37</option>
-            <option>38</option>
-            <option>39</option>
-            <option>40</option>
-            <option>41</option>
-            <option>42</option>
-            <option>43</option>
-            <option>44</option>
-            <option>45</option>
-            <option>46</option>
-          </select>
 
-          <button class="whatsapp"
-            onclick="orderProduct('Black Premium', '129,99 €', 'size3')">
-            Über WhatsApp bestellen
-          </button>
-        </div>
-      </article>
+      <select
+        id="priceFilter"
+        onchange="filterProducts()">
+
+        <option value="">
+          Alle Preise
+        </option>
+
+        <option value="100">
+          Bis 100 €
+        </option>
+
+        <option value="150">
+          Bis 150 €
+        </option>
+
+        <option value="200">
+          Bis 200 €
+        </option>
+
+      </select>
 
     </div>
+
+
+    <!-- PRODUKTE -->
+
+    <div
+      class="products"
+      id="products">
+
+    </div>
+
+
+    <div
+      class="no-results"
+      id="noResults">
+
+      Keine Produkte gefunden.
+
+    </div>
+
   </main>
 
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
   <footer>
-    © 2026 Fastfashion · Sneaker & Streetwear
+
+    © 2026 Fastfashion · Sneaker
+
   </footer>
 
 
   <script>
-    function orderProduct(product, price, sizeId) {
 
-      const size = document.getElementById(sizeId).value;
+    /*
+    =====================================================
+    PRODUKTE
 
-      if (!size) {
-        alert("Bitte zuerst eine Größe auswählen.");
-        return;
+    HIER KANNST DU SPÄTER ALLE 50 ANGEBOTE ÄNDERN.
+
+    image:
+    Gibt an, welches Bild angezeigt wird.
+
+    Beispiel:
+    "bilder/sneaker1.jpg"
+
+    Wenn du deine Bilder in einem Ordner
+    namens "bilder" speicherst, funktioniert das.
+
+    =====================================================
+    */
+
+
+    const products = [
+
+      {
+        name: "Classic Runner",
+        brand: "Nike",
+        price: 99.99,
+        image: "bilder/sneaker1.jpg"
+      },
+
+      {
+        name: "Street White",
+        brand: "Adidas",
+        price: 119.99,
+        image: "bilder/sneaker2.jpg"
+      },
+
+      {
+        name: "Black Premium",
+        brand: "Puma",
+        price: 129.99,
+        image: "bilder/sneaker3.jpg"
+      },
+
+      {
+        name: "Urban Blue",
+        brand: "Nike",
+        price: 139.99,
+        image: "bilder/sneaker4.jpg"
+      },
+
+      {
+        name: "Street Classic",
+        brand: "Adidas",
+        price: 109.99,
+        image: "bilder/sneaker5.jpg"
+      },
+
+      {
+        name: "Future Runner",
+        brand: "Puma",
+        price: 149.99,
+        image: "bilder/sneaker6.jpg"
+      },
+
+      {
+        name: "Air Style",
+        brand: "Nike",
+        price: 159.99,
+        image: "bilder/sneaker7.jpg"
+      },
+
+      {
+        name: "Urban Street",
+        brand: "Adidas",
+        price: 129.99,
+        image: "bilder/sneaker8.jpg"
+      },
+
+      {
+        name: "Dark Runner",
+        brand: "Puma",
+        price: 119.99,
+        image: "bilder/sneaker9.jpg"
+      },
+
+      {
+        name: "Classic Blue",
+        brand: "Nike",
+        price: 139.99,
+        image: "bilder/sneaker10.jpg"
+      },
+
+      {
+        name: "White Runner",
+        brand: "Adidas",
+        price: 149.99,
+        image: "bilder/sneaker11.jpg"
+      },
+
+      {
+        name: "Black Street",
+        brand: "Puma",
+        price: 99.99,
+        image: "bilder/sneaker12.jpg"
+      },
+
+      {
+        name: "Modern Runner",
+        brand: "Nike",
+        price: 179.99,
+        image: "bilder/sneaker13.jpg"
+      },
+
+      {
+        name: "Clean White",
+        brand: "Adidas",
+        price: 109.99,
+        image: "bilder/sneaker14.jpg"
+      },
+
+      {
+        name: "Night Runner",
+        brand: "Puma",
+        price: 129.99,
+        image: "bilder/sneaker15.jpg"
+      },
+
+      {
+        name: "Blue Motion",
+        brand: "Nike",
+        price: 149.99,
+        image: "bilder/sneaker16.jpg"
+      },
+
+      {
+        name: "Urban White",
+        brand: "Adidas",
+        price: 119.99,
+        image: "bilder/sneaker17.jpg"
+      },
+
+      {
+        name: "Dark Premium",
+        brand: "Puma",
+        price: 159.99,
+        image: "bilder/sneaker18.jpg"
+      },
+
+      {
+        name: "Street Motion",
+        brand: "Nike",
+        price: 139.99,
+        image: "bilder/sneaker19.jpg"
+      },
+
+      {
+        name: "Classic Runner 2",
+        brand: "Adidas",
+        price: 129.99,
+        image: "bilder/sneaker20.jpg"
+      },
+
+      {
+        name: "Blue Street",
+        brand: "Puma",
+        price: 109.99,
+        image: "bilder/sneaker21.jpg"
+      },
+
+      {
+        name: "Premium Runner",
+        brand: "Nike",
+        price: 189.99,
+        image: "bilder/sneaker22.jpg"
+      },
+
+      {
+        name: "White Motion",
+        brand: "Adidas",
+        price: 139.99,
+        image: "bilder/sneaker23.jpg"
+      },
+
+      {
+        name: "Black Runner",
+        brand: "Puma",
+        price: 119.99,
+        image: "bilder/sneaker24.jpg"
+      },
+
+      {
+        name: "Street Blue",
+        brand: "Nike",
+        price: 149.99,
+        image: "bilder/sneaker25.jpg"
+      },
+
+      {
+        name: "Classic White",
+        brand: "Adidas",
+        price: 99.99,
+        image: "bilder/sneaker26.jpg"
+      },
+
+      {
+        name: "Urban Black",
+        brand: "Puma",
+        price: 129.99,
+        image: "bilder/sneaker27.jpg"
+      },
+
+      {
+        name: "Future Street",
+        brand: "Nike",
+        price: 169.99,
+        image: "bilder/sneaker28.jpg"
+      },
+
+      {
+        name: "Clean Runner",
+        brand: "Adidas",
+        price: 119.99,
+        image: "bilder/sneaker29.jpg"
+      },
+
+      {
+        name: "Blue Premium",
+        brand: "Puma",
+        price: 139.99,
+        image: "bilder/sneaker30.jpg"
+      },
+
+      {
+        name: "Air Runner",
+        brand: "Nike",
+        price: 179.99,
+        image: "bilder/sneaker31.jpg"
+      },
+
+      {
+        name: "Street White 2",
+        brand: "Adidas",
+        price: 129.99,
+        image: "bilder/sneaker32.jpg"
+      },
+
+      {
+        name: "Dark Motion",
+        brand: "Puma",
+        price: 109.99,
+        image: "bilder/sneaker33.jpg"
+      },
+
+      {
+        name: "Urban Runner",
+        brand: "Nike",
+        price: 159.99,
+        image: "bilder/sneaker34.jpg"
+      },
+
+      {
+        name: "Classic Street",
+        brand: "Adidas",
+        price: 139.99,
+        image: "bilder/sneaker35.jpg"
+      },
+
+      {
+        name: "Premium Street",
+        brand: "Puma",
+        price: 149.99,
+        image: "bilder/sneaker36.jpg"
+      },
+
+      {
+        name: "Blue Runner",
+        brand: "Nike",
+        price: 129.99,
+        image: "bilder/sneaker37.jpg"
+      },
+
+      {
+        name: "White Premium",
+        brand: "Adidas",
+        price: 159.99,
+        image: "bilder/sneaker38.jpg"
+      },
+
+      {
+        name: "Black Motion",
+        brand: "Puma",
+        price: 119.99,
+        image: "bilder/sneaker39.jpg"
+      },
+
+      {
+        name: "Street Runner",
+        brand: "Nike",
+        price: 149.99,
+        image: "bilder/sneaker40.jpg"
+      },
+
+      {
+        name: "Urban Classic",
+        brand: "Adidas",
+        price: 109.99,
+        image: "bilder/sneaker41.jpg"
+      },
+
+      {
+        name: "Night Street",
+        brand: "Puma",
+        price: 139.99,
+        image: "bilder/sneaker42.jpg"
+      },
+
+      {
+        name: "Modern Blue",
+        brand: "Nike",
+        price: 169.99,
+        image: "bilder/sneaker43.jpg"
+      },
+
+      {
+        name: "Clean Street",
+        brand: "Adidas",
+        price: 129.99,
+        image: "bilder/sneaker44.jpg"
+      },
+
+      {
+        name: "Black Premium 2",
+        brand: "Puma",
+        price: 149.99,
+        image: "bilder/sneaker45.jpg"
+      },
+
+      {
+        name: "Future Runner 2",
+        brand: "Nike",
+        price: 199.99,
+        image: "bilder/sneaker46.jpg"
+      },
+
+      {
+        name: "White Classic",
+        brand: "Adidas",
+        price: 119.99,
+        image: "bilder/sneaker47.jpg"
+      },
+
+      {
+        name: "Blue Street 2",
+        brand: "Puma",
+        price: 129.99,
+        image: "bilder/sneaker48.jpg"
+      },
+
+      {
+        name: "Premium Blue",
+        brand: "Nike",
+        price: 179.99,
+        image: "bilder/sneaker49.jpg"
+      },
+
+      {
+        name: "Final Street",
+        brand: "Adidas",
+        price: 149.99,
+        image: "bilder/sneaker50.jpg"
       }
 
+    ];
+
+
+    /*
+    =====================================================
+    PRODUKTE ANZEIGEN
+    =====================================================
+    */
+
+    function renderProducts(list) {
+
+      const container =
+        document.getElementById("products");
+
+      const noResults =
+        document.getElementById("noResults");
+
+      container.innerHTML = "";
+
+      if (list.length === 0) {
+
+        noResults.style.display = "block";
+
+        return;
+
+      }
+
+      noResults.style.display = "none";
+
+
+      list.forEach((product, index) => {
+
+        const article =
+          document.createElement("article");
+
+        article.className = "product";
+
+
+        article.innerHTML = `
+
+          <img
+            class="product-image"
+            src="${product.image}"
+            alt="${product.name}"
+            onerror="this.src='https://placehold.co/900x700/e9eef5/777?text=Dein+Sneaker'">
+
+
+          <div class="product-info">
+
+            <span class="brand">
+              ${product.brand}
+            </span>
+
+            <h3>
+              ${product.name}
+            </h3>
+
+            <div class="price">
+              ${product.price.toFixed(2).replace(".", ",")} €
+            </div>
+
+
+            <label
+              class="size-label"
+              for="size-${index}">
+
+              Größe
+
+            </label>
+
+
+            <select
+              class="size-select"
+              id="size-${index}">
+
+              <option value="">
+                Größe auswählen
+              </option>
+
+              <option>36</option>
+              <option>37</option>
+              <option>38</option>
+              <option>39</option>
+              <option>40</option>
+              <option>41</option>
+              <option>42</option>
+              <option>43</option>
+              <option>44</option>
+              <option>45</option>
+              <option>46</option>
+
+            </select>
+
+
+            <button
+              class="whatsapp"
+              onclick="orderProduct(
+                '${product.name.replace(/'/g, "\\'")}',
+                '${product.price.toFixed(2).replace(".", ",")} €',
+                'size-${index}'
+              )">
+
+              Über WhatsApp bestellen
+
+            </button>
+
+          </div>
+
+        `;
+
+
+        container.appendChild(article);
+
+      });
+
+    }
+
+
+    /*
+    =====================================================
+    MARKENFILTER ERSTELLEN
+    =====================================================
+    */
+
+    function createBrandFilter() {
+
+      const select =
+        document.getElementById("brandFilter");
+
+      const brands =
+        [...new Set(products.map(product => product.brand))];
+
+      brands.forEach(brand => {
+
+        const option =
+          document.createElement("option");
+
+        option.value = brand;
+
+        option.textContent = brand;
+
+        select.appendChild(option);
+
+      });
+
+    }
+
+
+    /*
+    =====================================================
+    SUCHE & FILTER
+    =====================================================
+    */
+
+    function filterProducts() {
+
+      const search =
+        document
+          .getElementById("search")
+          .value
+          .toLowerCase();
+
+
+      const brand =
+        document
+          .getElementById("brandFilter")
+          .value;
+
+
+      const maxPrice =
+        document
+          .getElementById("priceFilter")
+          .value;
+
+
+      const filtered =
+        products.filter(product => {
+
+          const matchesSearch =
+            product.name
+              .toLowerCase()
+              .includes(search) ||
+
+            product.brand
+              .toLowerCase()
+              .includes(search);
+
+
+          const matchesBrand =
+            !brand ||
+            product.brand === brand;
+
+
+          const matchesPrice =
+            !maxPrice ||
+            product.price <= Number(maxPrice);
+
+
+          return (
+            matchesSearch &&
+            matchesBrand &&
+            matchesPrice
+          );
+
+        });
+
+
+      renderProducts(filtered);
+
+    }
+
+
+    /*
+    =====================================================
+    WHATSAPP BESTELLUNG
+    =====================================================
+    */
+
+    function orderProduct(
+      product,
+      price,
+      sizeId
+    ) {
+
+      const size =
+        document
+          .getElementById(sizeId)
+          .value;
+
+
+      if (!size) {
+
+        alert(
+          "Bitte zuerst eine Größe auswählen."
+        );
+
+        return;
+
+      }
+
+
       /*
-        WICHTIG:
-        Ersetze DEINE_NUMMER durch deine WhatsApp-Nummer.
+      WICHTIG:
 
-        Beispiel Deutschland:
-        491701234567
+      Hier später deine WhatsApp-Nummer eintragen.
 
-        Keine + Zeichen, Leerzeichen oder Klammern.
+      Deutschland-Beispiel:
+
+      491701234567
+
+      OHNE:
+      +
+      Leerzeichen
+      Klammern
+      Bindestriche
       */
 
-      const phoneNumber = "DEINE_NUMMER";
+      const phoneNumber =
+        "DEINE_NUMMER";
+
 
       const message =
         "Hallo Fastfashion,%0A%0A" +
-        "ich möchte diesen Sneaker bestellen:%0A" +
-        "Produkt: " + product + "%0A" +
-        "Preis: " + price + "%0A" +
-        "Größe: " + size;
+
+        "ich interessiere mich für:%0A" +
+
+        "Produkt: " +
+        encodeURIComponent(product) +
+
+        "%0A" +
+
+        "Preis: " +
+        encodeURIComponent(price) +
+
+        "%0A" +
+
+        "Größe: " +
+        encodeURIComponent(size);
+
 
       const whatsappURL =
-        "https://wa.me/" + phoneNumber + "?text=" + message;
+        "https://wa.me/" +
+        phoneNumber +
+        "?text=" +
+        message;
 
-      window.open(whatsappURL, "_blank");
+
+      window.open(
+        whatsappURL,
+        "_blank"
+      );
+
     }
+
+
+    /*
+    =====================================================
+    START
+    =====================================================
+    */
+
+    createBrandFilter();
+
+    renderProducts(products);
+
   </script>
 
 </body>
