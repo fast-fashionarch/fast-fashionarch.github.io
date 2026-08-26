@@ -586,17 +586,75 @@
     .product h3 {
       font-size: 19px;
 
-      margin-bottom: 7px;
+      margin-bottom: 16px;
     }
 
-    .product-description {
-      min-height: 42px;
 
-      color: var(--muted);
+    /* =========================================
+       FARBAUSWAHL
+    ========================================= */
 
-      font-size: 13px;
+    .product-colors {
+      margin-bottom: 18px;
+    }
 
-      margin-bottom: 20px;
+    .color-title {
+      color: #666;
+
+      font-size: 10px;
+
+      letter-spacing: 1.3px;
+
+      text-transform: uppercase;
+
+      margin-bottom: 9px;
+    }
+
+    .color-options {
+      display: flex;
+
+      align-items: center;
+
+      gap: 9px;
+    }
+
+    .color-option {
+      width: 23px;
+      height: 23px;
+
+      padding: 0;
+
+      border-radius: 50%;
+
+      border: 2px solid rgba(255,255,255,0.25);
+
+      cursor: pointer;
+
+      transition: 0.2s;
+
+      position: relative;
+    }
+
+    .color-option:hover {
+      transform: scale(1.08);
+
+      border-color: rgba(255,255,255,0.7);
+    }
+
+    .color-option.active {
+      border-color: white;
+
+      box-shadow:
+        0 0 0 2px #111,
+        0 0 0 3px white;
+    }
+
+    .selected-color-name {
+      margin-top: 8px;
+
+      color: #777;
+
+      font-size: 10px;
     }
 
 
@@ -837,7 +895,7 @@
       <a
         class="header-whatsapp"
         href="#"
-        onclick="openGeneralWhatsApp()"
+        onclick="openGeneralWhatsApp(); return false;"
       >
         Wunschmodell →
       </a>
@@ -990,30 +1048,6 @@
       </div>
 
 
-      <!--
-        =====================================================
-        PRODUKTE
-        =====================================================
-
-        JEDES PRODUKT KANN BELIEBIG VIELE BILDER HABEN.
-
-        Beispiel:
-
-        images: [
-          "images/product1-1.jpg",
-          "images/product1-2.jpg",
-          "images/product1-3.jpg",
-          "images/product1-4.jpg"
-        ]
-
-        Du kannst später einfach ein fünftes Bild ergänzen:
-
-          "images/product1-5.jpg"
-
-        usw.
-        =====================================================
-      -->
-
       <div
         class="products"
         id="productsContainer"
@@ -1054,7 +1088,7 @@
         <a
           class="button button-primary"
           href="#"
-          onclick="openGeneralWhatsApp()"
+          onclick="openGeneralWhatsApp(); return false;"
         >
           Foto über WhatsApp senden →
         </a>
@@ -1097,34 +1131,49 @@
 
     /* =====================================================
        WHATSAPP-NUMMER
-       =====================================================
-
-       HIER DEINE ECHTE NUMMER EINTRAGEN.
-
-       Deutschland Beispiel:
-
-       491701234567
-
-       OHNE:
-       +
-       Leerzeichen
-       Klammern
-       führende 0
     ===================================================== */
 
     const WHATSAPP_NUMBER = "4915737409159";
 
 
     /* =====================================================
-       DEINE PRODUKTE
+       PRODUKTE
        =====================================================
 
-       HIER FÜGST DU DEINE PRODUKTE EIN.
+       WICHTIG:
 
-       JEDES PRODUKT KANN SO VIELE BILDER HABEN,
-       WIE DU MÖCHTEST.
+       Jede Farbe bekommt ihre eigenen Bilder.
+
+       Beispiel mit 2 Farben:
+
+       colors: [
+
+         {
+           name: "Schwarz",
+           value: "#111111",
+
+           images: [
+             "schwarz-1.jpg",
+             "schwarz-2.jpg",
+             "schwarz-3.jpg"
+           ]
+         },
+
+         {
+           name: "Weiß",
+           value: "#ffffff",
+
+           images: [
+             "weiss-1.jpg",
+             "weiss-2.jpg",
+             "weiss-3.jpg"
+           ]
+         }
+
+       ]
 
     ===================================================== */
+
 
     const products = [
 
@@ -1133,16 +1182,23 @@
 
         category: "Sneaker / 01",
 
-        description: "fastfashion"
-    
+        colors: [
 
-        images: [
-          "1Air Jordan 1 Low Spades Sneakers.jpg",
-          "2Air Jordan 1 Low Spades Sneakers.jpg",
-          "3Air Jordan 1 Low Spades Sneakers.jpg",
-          "4Air Jordan 1 Low Spades Sneakers.jpg",
-          "5Air Jordan 1 Low Spades Sneakers.jpg",
-          "6Air Jordan 1 Low Spades Sneakers.jpg",
+          {
+            name: "Schwarz",
+
+            value: "#111111",
+
+            images: [
+              "1Air Jordan 1 Low Spades Sneakers.jpg",
+              "2Air Jordan 1 Low Spades Sneakers.jpg",
+              "3Air Jordan 1 Low Spades Sneakers.jpg",
+              "4Air Jordan 1 Low Spades Sneakers.jpg",
+              "5Air Jordan 1 Low Spades Sneakers.jpg",
+              "6Air Jordan 1 Low Spades Sneakers.jpg"
+            ]
+          }
+
         ]
       },
 
@@ -1152,17 +1208,23 @@
 
         category: "Sneaker / 02",
 
-        
-          
+        colors: [
 
-        images: [
-          "1Louis Vuitton LV Skate Monogram Trainer Hellgrauer Sneaker.jpg",
-          "2Louis Vuitton LV Skate Monogram Trainer Hellgrauer Sneaker.jpg",
-          "3Louis Vuitton LV Skate Monogram Trainer Hellgrauer Sneaker.jpg",
-          "4Louis Vuitton LV Skate Monogram Trainer Hellgrauer Sneaker.jpg",
-          "5Louis Vuitton LV Skate Monogram Trainer Hellgrauer Sneaker.jpg",
-          "6Louis Vuitton LV Skate Monogram Trainer Hellgrauer Sneaker.jpg",
-          "7Louis Vuitton LV Skate Monogram Trainer Hellgrauer Sneaker.jpg",
+          {
+            name: "Hellgrau",
+
+            value: "#bdbdbd",
+
+            images: [
+              "1Louis Vuitton LV Skate Monogram Trainer Hellgrauer Sneaker.jpg",
+              "2Louis Vuitton LV Skate Monogram Trainer Hellgrauer Sneaker.jpg",
+              "3Louis Vuitton LV Skate Monogram Trainer Hellgrauer Sneaker.jpg",
+              "4Louis Vuitton LV Skate Monogram Trainer Hellgrauer Sneaker.jpg",
+              "5Louis Vuitton LV Skate Monogram Trainer Hellgrauer Sneaker.jpg",
+              "6Louis Vuitton LV Skate Monogram Trainer Hellgrauer Sneaker.jpg",
+              "7Louis Vuitton LV Skate Monogram Trainer Hellgrauer Sneaker.jpg"
+            ]
+          }
 
         ]
       },
@@ -1173,17 +1235,24 @@
 
         category: "Sneaker / 03",
 
-   
-          
+        colors: [
 
-        images: [
-          "1Travis Scott x Air Jordan 1 Low.jpg",
-          "2Travis Scott x Air Jordan 1 Low.jpg",
-          "3Travis Scott x Air Jordan 1 Low.jpg",
-          "4Travis Scott x Air Jordan 1 Low.jpg",
-          "5Travis Scott x Air Jordan 1 Low.jpg",
-          "6Travis Scott x Air Jordan 1 Low.jpg",
-          "7Travis Scott x Air Jordan 1 Low.jpg",
+          {
+            name: "Braun",
+
+            value: "#6b4a35",
+
+            images: [
+              "1Travis Scott x Air Jordan 1 Low.jpg",
+              "2Travis Scott x Air Jordan 1 Low.jpg",
+              "3Travis Scott x Air Jordan 1 Low.jpg",
+              "4Travis Scott x Air Jordan 1 Low.jpg",
+              "5Travis Scott x Air Jordan 1 Low.jpg",
+              "6Travis Scott x Air Jordan 1 Low.jpg",
+              "7Travis Scott x Air Jordan 1 Low.jpg"
+            ]
+          }
+
         ]
       },
 
@@ -1193,34 +1262,67 @@
 
         category: "Collection / 04",
 
-        
-          
+        colors: [
 
-        images: [
-          "1Chanel CC Runner Metallic.jpg",
-          "2Chanel CC Runner Metallic.jpg",
-          "3Chanel CC Runner Metallic.jpg",
-          "4Chanel CC Runner Metallic.jpg",
-          "5Chanel CC Runner Metallic.jpg",
-          "6Chanel CC Runner Metallic.jpg",
-          "7Chanel CC Runner Metallic.jpg",
-          "8Chanel CC Runner Metallic.jpg",
+          {
+            name: "Metallic",
+
+            value: "#b7b7b7",
+
+            images: [
+              "1Chanel CC Runner Metallic.jpg",
+              "2Chanel CC Runner Metallic.jpg",
+              "3Chanel CC Runner Metallic.jpg",
+              "4Chanel CC Runner Metallic.jpg",
+              "5Chanel CC Runner Metallic.jpg",
+              "6Chanel CC Runner Metallic.jpg",
+              "7Chanel CC Runner Metallic.jpg",
+              "8Chanel CC Runner Metallic.jpg"
+            ]
+          }
+
         ]
       },
 
+
+      /* =================================================
+         BEISPIEL MIT 2 FARBEN
+         ================================================= */
 
       {
         name: "Premium Model 05",
 
         category: "Collection / 05",
 
-        
+        colors: [
 
-        images: [
-          "images/product5-1.jpg",
-          "images/product5-2.jpg",
-          "images/product5-3.jpg",
-          "images/product5-4.jpg"
+          {
+            name: "Schwarz",
+
+            value: "#111111",
+
+            images: [
+              "images/product5-black-1.jpg",
+              "images/product5-black-2.jpg",
+              "images/product5-black-3.jpg",
+              "images/product5-black-4.jpg"
+            ]
+          },
+
+
+          {
+            name: "Weiß",
+
+            value: "#ffffff",
+
+            images: [
+              "images/product5-white-1.jpg",
+              "images/product5-white-2.jpg",
+              "images/product5-white-3.jpg",
+              "images/product5-white-4.jpg"
+            ]
+          }
+
         ]
       },
 
@@ -1230,18 +1332,43 @@
 
         category: "Collection / 06",
 
-    
-          
+        colors: [
 
-        images: [
-          "images/product6-1.jpg",
-          "images/product6-2.jpg",
-          "images/product6-3.jpg",
-          "images/product6-4.jpg"
+          {
+            name: "Schwarz",
+
+            value: "#111111",
+
+            images: [
+              "images/product6-1.jpg",
+              "images/product6-2.jpg",
+              "images/product6-3.jpg",
+              "images/product6-4.jpg"
+            ]
+          }
+
         ]
       }
 
     ];
+
+
+
+    /* =====================================================
+       AKTUELL AUSGEWÄHLTE FARBE
+    ===================================================== */
+
+    const currentColors =
+      new Array(products.length).fill(0);
+
+
+
+    /* =====================================================
+       AKTUELLES BILD
+    ===================================================== */
+
+    const currentImages =
+      new Array(products.length).fill(0);
 
 
 
@@ -1258,22 +1385,28 @@
       const productElement =
         document.createElement("article");
 
-      productElement.className = "product";
+
+      productElement.className =
+        "product";
+
+
+      const selectedColor =
+        product.colors[0];
 
 
       /*
-        BILDER ERSTELLEN
+        BILDER
       */
 
       const imagesHTML =
-        product.images
+        selectedColor.images
           .map((image, imageIndex) => {
 
             return `
               <img
                 class="gallery-image"
                 src="${image}"
-                alt="${product.name} — Bild ${imageIndex + 1}"
+                alt="${product.name} — ${selectedColor.name} — Bild ${imageIndex + 1}"
                 draggable="false"
               >
             `;
@@ -1283,16 +1416,18 @@
 
 
       /*
-        DOTS ERSTELLEN
+        DOTS
       */
 
       const dotsHTML =
-        product.images
+        selectedColor.images
           .map((_, imageIndex) => {
 
             return `
               <button
-                class="gallery-dot ${imageIndex === 0 ? "active" : ""}"
+                class="gallery-dot ${
+                  imageIndex === 0 ? "active" : ""
+                }"
                 onclick="goToImage(
                   ${productIndex},
                   ${imageIndex}
@@ -1303,6 +1438,67 @@
 
           })
           .join("");
+
+
+      /*
+        FARBEN
+      */
+
+      const colorsHTML =
+        product.colors.length > 1
+          ? `
+
+            <div class="product-colors">
+
+              <div class="color-title">
+                Farbe
+              </div>
+
+
+              <div class="color-options">
+
+                ${product.colors
+                  .map((color, colorIndex) => {
+
+                    return `
+                      <button
+                        class="color-option ${
+                          colorIndex === 0
+                            ? "active"
+                            : ""
+                        }"
+                        style="
+                          background: ${color.value};
+                        "
+                        onclick="
+                          changeColor(
+                            ${productIndex},
+                            ${colorIndex}
+                          )
+                        "
+                        aria-label="${color.name}"
+                        title="${color.name}"
+                      ></button>
+                    `;
+
+                  })
+                  .join("")}
+
+              </div>
+
+
+              <div
+                class="selected-color-name"
+                id="selected-color-${productIndex}"
+              >
+                ${selectedColor.name}
+              </div>
+
+            </div>
+
+          `
+          : "";
+
 
 
       /*
@@ -1327,60 +1523,54 @@
 
 
           ${
-            product.images.length > 1
-            ? `
+            selectedColor.images.length > 1
+              ? `
 
-              <button
-                class="gallery-arrow gallery-prev"
-                onclick="previousImage(${productIndex})"
-                aria-label="Vorheriges Bild"
-              >
-                ‹
-              </button>
-
-
-              <button
-                class="gallery-arrow gallery-next"
-                onclick="nextImage(${productIndex})"
-                aria-label="Nächstes Bild"
-              >
-                ›
-              </button>
-
-            `
-            : ""
-          }
+                <button
+                  class="gallery-arrow gallery-prev"
+                  onclick="
+                    previousImage(
+                      ${productIndex}
+                    )
+                  "
+                  aria-label="Vorheriges Bild"
+                >
+                  ‹
+                </button>
 
 
-          ${
-            product.images.length > 1
-            ? `
-
-              <div class="image-counter">
-
-                <span id="counter-${productIndex}">
-                  1 / ${product.images.length}
-                </span>
-
-              </div>
-
-            `
-            : ""
-          }
+                <button
+                  class="gallery-arrow gallery-next"
+                  onclick="
+                    nextImage(
+                      ${productIndex}
+                    )
+                  "
+                  aria-label="Nächstes Bild"
+                >
+                  ›
+                </button>
 
 
-          ${
-            product.images.length > 1
-            ? `
+                <div class="image-counter">
 
-              <div class="gallery-dots">
+                  <span
+                    id="counter-${productIndex}"
+                  >
+                    1 / ${selectedColor.images.length}
+                  </span>
 
-                ${dotsHTML}
+                </div>
 
-              </div>
 
-            `
-            : ""
+                <div class="gallery-dots">
+
+                  ${dotsHTML}
+
+                </div>
+
+              `
+              : ""
           }
 
         </div>
@@ -1392,20 +1582,24 @@
             ${product.category}
           </div>
 
+
           <h3>
             ${product.name}
           </h3>
 
-          <p class="product-description">
-            ${product.description}
-          </p>
+
+          ${colorsHTML}
+
 
           <a
             class="whatsapp-button"
             href="#"
-            onclick="contactWhatsApp(
-              '${product.name.replace(/'/g, "\\'")}'
-            )"
+            onclick="
+              contactWhatsApp(
+                ${productIndex}
+              );
+              return false;
+            "
           >
             WhatsApp · Preis anfragen
           </a>
@@ -1415,38 +1609,252 @@
       `;
 
 
-      productsContainer.appendChild(productElement);
+      productsContainer.appendChild(
+        productElement
+      );
 
     });
 
 
 
     /* =====================================================
-       AKTUELLE BILDER
+       FARBE WECHSELN
     ===================================================== */
 
-    const currentImages =
-      new Array(products.length).fill(0);
+    function changeColor(
+      productIndex,
+      colorIndex
+    ) {
+
+      currentColors[productIndex] =
+        colorIndex;
 
 
+      currentImages[productIndex] =
+        0;
 
-    /* =====================================================
-       BILD WECHSELN
-    ===================================================== */
 
-    function updateGallery(productIndex) {
+      const product =
+        products[productIndex];
 
-      const current =
-        currentImages[productIndex];
+
+      const color =
+        product.colors[colorIndex];
+
+
+      const gallery =
+        document.getElementById(
+          `gallery-${productIndex}`
+        );
+
 
       const track =
         document.getElementById(
           `track-${productIndex}`
         );
 
-      const counter =
+
+      /*
+        NEUE BILDER
+      */
+
+      track.innerHTML =
+        color.images
+          .map((image, imageIndex) => {
+
+            return `
+              <img
+                class="gallery-image"
+                src="${image}"
+                alt="${product.name} — ${color.name} — Bild ${imageIndex + 1}"
+                draggable="false"
+              >
+            `;
+
+          })
+          .join("");
+
+
+      track.style.transform =
+        "translateX(0%)";
+
+
+      /*
+        ALTE NAVIGATION ENTFERNEN
+      */
+
+      gallery
+        .querySelectorAll(
+          ".gallery-arrow, .image-counter, .gallery-dots"
+        )
+        .forEach(element => {
+
+          element.remove();
+
+        });
+
+
+
+      /*
+        NEUE NAVIGATION
+      */
+
+      if (color.images.length > 1) {
+
+        const dotsHTML =
+          color.images
+            .map((_, imageIndex) => {
+
+              return `
+                <button
+                  class="gallery-dot ${
+                    imageIndex === 0
+                      ? "active"
+                      : ""
+                  }"
+                  onclick="
+                    goToImage(
+                      ${productIndex},
+                      ${imageIndex}
+                    )
+                  "
+                  aria-label="
+                    Bild ${imageIndex + 1}
+                  "
+                ></button>
+              `;
+
+            })
+            .join("");
+
+
+        gallery.insertAdjacentHTML(
+          "beforeend",
+          `
+
+            <button
+              class="gallery-arrow gallery-prev"
+              onclick="
+                previousImage(
+                  ${productIndex}
+                )
+              "
+              aria-label="Vorheriges Bild"
+            >
+              ‹
+            </button>
+
+
+            <button
+              class="gallery-arrow gallery-next"
+              onclick="
+                nextImage(
+                  ${productIndex}
+                )
+              "
+              aria-label="Nächstes Bild"
+            >
+              ›
+            </button>
+
+
+            <div class="image-counter">
+
+              <span
+                id="counter-${productIndex}"
+              >
+                1 / ${color.images.length}
+              </span>
+
+            </div>
+
+
+            <div class="gallery-dots">
+
+              ${dotsHTML}
+
+            </div>
+
+          `
+        );
+
+      }
+
+
+
+      /*
+        AKTIVE FARBE
+      */
+
+      const productElement =
+        gallery.closest(".product");
+
+
+      const colorOptions =
+        productElement.querySelectorAll(
+          ".color-option"
+        );
+
+
+      colorOptions.forEach(
+        (button, index) => {
+
+          button.classList.toggle(
+            "active",
+            index === colorIndex
+          );
+
+        }
+      );
+
+
+
+      /*
+        FARBNAME UNTEN ÄNDERN
+      */
+
+      const selectedColorName =
         document.getElementById(
-          `counter-${productIndex}`
+          `selected-color-${productIndex}`
+        );
+
+
+      if (selectedColorName) {
+
+        selectedColorName.textContent =
+          color.name;
+
+      }
+
+    }
+
+
+
+    /* =====================================================
+       GALERIE AKTUALISIEREN
+    ===================================================== */
+
+    function updateGallery(
+      productIndex
+    ) {
+
+      const product =
+        products[productIndex];
+
+
+      const color =
+        product.colors[
+          currentColors[productIndex]
+        ];
+
+
+      const current =
+        currentImages[productIndex];
+
+
+      const track =
+        document.getElementById(
+          `track-${productIndex}`
         );
 
 
@@ -1454,13 +1862,28 @@
         `translateX(-${current * 100}%)`;
 
 
+      /*
+        COUNTER
+      */
+
+      const counter =
+        document.getElementById(
+          `counter-${productIndex}`
+        );
+
+
       if (counter) {
 
         counter.textContent =
-          `${current + 1} / ${products[productIndex].images.length}`;
+          `${current + 1} / ${color.images.length}`;
 
       }
 
+
+
+      /*
+        DOTS
+      */
 
       const gallery =
         document.getElementById(
@@ -1474,14 +1897,16 @@
         );
 
 
-      dots.forEach((dot, index) => {
+      dots.forEach(
+        (dot, index) => {
 
-        dot.classList.toggle(
-          "active",
-          index === current
-        );
+          dot.classList.toggle(
+            "active",
+            index === current
+          );
 
-      });
+        }
+      );
 
     }
 
@@ -1491,17 +1916,38 @@
        NÄCHSTES BILD
     ===================================================== */
 
-    function nextImage(productIndex) {
+    function nextImage(
+      productIndex
+    ) {
+
+      const product =
+        products[productIndex];
+
+
+      const color =
+        product.colors[
+          currentColors[productIndex]
+        ];
+
 
       const total =
-        products[productIndex].images.length;
+        color.images.length;
+
+
+      if (total <= 1) {
+        return;
+      }
 
 
       currentImages[productIndex] =
-        (currentImages[productIndex] + 1) % total;
+        (
+          currentImages[productIndex] + 1
+        ) % total;
 
 
-      updateGallery(productIndex);
+      updateGallery(
+        productIndex
+      );
 
     }
 
@@ -1511,10 +1957,27 @@
        VORHERIGES BILD
     ===================================================== */
 
-    function previousImage(productIndex) {
+    function previousImage(
+      productIndex
+    ) {
+
+      const product =
+        products[productIndex];
+
+
+      const color =
+        product.colors[
+          currentColors[productIndex]
+        ];
+
 
       const total =
-        products[productIndex].images.length;
+        color.images.length;
+
+
+      if (total <= 1) {
+        return;
+      }
 
 
       currentImages[productIndex] =
@@ -1523,7 +1986,9 @@
         ) % total;
 
 
-      updateGallery(productIndex);
+      updateGallery(
+        productIndex
+      );
 
     }
 
@@ -1542,7 +2007,9 @@
         imageIndex;
 
 
-      updateGallery(productIndex);
+      updateGallery(
+        productIndex
+      );
 
     }
 
@@ -1552,14 +2019,30 @@
        WHATSAPP — PRODUKT
     ===================================================== */
 
-    function contactWhatsApp(productName) {
+    function contactWhatsApp(
+      productIndex
+    ) {
+
+      const product =
+        products[productIndex];
+
+
+      const colorIndex =
+        currentColors[productIndex];
+
+
+      const selectedColor =
+        product.colors[colorIndex];
+
 
       const message =
         `Hallo FAST FASHION,
 
 ich interessiere mich für:
 
-${productName}
+${product.name}
+
+Farbe: ${selectedColor.name}
 
 Könnt ihr mir bitte den Preis und die Verfügbarkeit mitteilen?`;
 
@@ -1608,7 +2091,7 @@ ich suche ein bestimmtes Modell und möchte euch gerne ein Foto davon schicken.`
 
     /* =====================================================
        TOUCH / SWIPE
-       ===================================================== */
+    ===================================================== */
 
     document.addEventListener(
       "DOMContentLoaded",
@@ -1625,18 +2108,19 @@ ich suche ein bestimmtes Modell und möchte euch gerne ein Foto davon schicken.`
 
             let touchStartX = 0;
 
-            let touchEndX = 0;
-
 
             gallery.addEventListener(
               "touchstart",
               (event) => {
 
                 touchStartX =
-                  event.changedTouches[0].screenX;
+                  event.changedTouches[0]
+                    .screenX;
 
               },
-              { passive: true }
+              {
+                passive: true
+              }
             );
 
 
@@ -1644,31 +2128,45 @@ ich suche ein bestimmtes Modell und möchte euch gerne ein Foto davon schicken.`
               "touchend",
               (event) => {
 
-                touchEndX =
-                  event.changedTouches[0].screenX;
+                const touchEndX =
+                  event.changedTouches[0]
+                    .screenX;
 
 
                 const difference =
-                  touchStartX - touchEndX;
+                  touchStartX -
+                  touchEndX;
 
 
-                if (Math.abs(difference) < 40) {
+                if (
+                  Math.abs(difference) < 40
+                ) {
+
                   return;
+
                 }
 
 
-                if (difference > 0) {
+                if (
+                  difference > 0
+                ) {
 
-                  nextImage(productIndex);
+                  nextImage(
+                    productIndex
+                  );
 
                 } else {
 
-                  previousImage(productIndex);
+                  previousImage(
+                    productIndex
+                  );
 
                 }
 
               },
-              { passive: true }
+              {
+                passive: true
+              }
             );
 
           }
