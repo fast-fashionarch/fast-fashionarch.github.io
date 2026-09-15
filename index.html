@@ -1,2185 +1,718 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>FAST FASHION — Premium Collection</title>
-
-  <meta
-    name="description"
-    content="FAST FASHION — ausgewählte Fashion Styles mit hochwertiger Verarbeitung."
-  >
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet"
-  >
-
-  <style>
-
-    /* =========================================
-       RESET
-    ========================================= */
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: "Inter", sans-serif;
-      background: #080808;
-      color: #fff;
-      line-height: 1.5;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    button {
-      font-family: inherit;
-    }
-
-
-    /* =========================================
-       VARIABLES
-    ========================================= */
-
-    :root {
-      --background: #080808;
-      --card: #111111;
-      --card-hover: #171717;
-      --border: rgba(255,255,255,0.09);
-      --text: #ffffff;
-      --muted: #929292;
-      --whatsapp: #25D366;
-    }
-
-
-    /* =========================================
-       HEADER
-    ========================================= */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-
-      background: rgba(8,8,8,0.82);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-
-      border-bottom: 1px solid var(--border);
-    }
-
-    .navbar {
-      max-width: 1400px;
-      margin: auto;
-
-      padding: 19px 5%;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 25px;
-    }
-
-    .logo {
-      font-size: 24px;
-      font-weight: 900;
-      letter-spacing: -1.5px;
-      white-space: nowrap;
-    }
-
-    .logo span {
-      font-weight: 400;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-    }
-
-    nav a {
-      color: #bdbdbd;
-      font-size: 13px;
-      transition: 0.2s;
-    }
-
-    nav a:hover {
-      color: white;
-    }
-
-    .header-whatsapp {
-      background: white;
-      color: black;
-
-      padding: 11px 17px;
-
-      border-radius: 100px;
-
-      font-size: 12px;
-      font-weight: 800;
-
-      transition: 0.2s;
-    }
-
-    .header-whatsapp:hover {
-      transform: translateY(-2px);
-    }
-
-
-    /* =========================================
-       HERO
-    ========================================= */
-
-    .hero {
-      min-height: 720px;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      text-align: center;
-
-      padding: 100px 5%;
-
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-
-      position: absolute;
-
-      width: 650px;
-      height: 650px;
-
-      top: -300px;
-      left: 50%;
-
-      transform: translateX(-50%);
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(255,255,255,0.10),
-          transparent 65%
-        );
-    }
-
-    .hero-content {
-      max-width: 900px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .eyebrow {
-      display: inline-block;
-
-      padding: 8px 15px;
-
-      border: 1px solid var(--border);
-      border-radius: 100px;
-
-      color: #aaa;
-
-      font-size: 11px;
-      letter-spacing: 1.6px;
-
-      text-transform: uppercase;
-
-      margin-bottom: 25px;
-    }
-
-    .hero h1 {
-      font-size: clamp(65px, 12vw, 155px);
-
-      line-height: 0.82;
-
-      letter-spacing: -8px;
-
-      font-weight: 900;
-
-      margin-bottom: 35px;
-    }
-
-    .hero h1 span {
-      color: #666;
-    }
-
-    .hero p {
-      max-width: 620px;
-
-      margin: auto;
-
-      color: var(--muted);
-
-      font-size: 16px;
-    }
-
-    .hero-buttons {
-      margin-top: 35px;
-
-      display: flex;
-      justify-content: center;
-
-      gap: 12px;
-
-      flex-wrap: wrap;
-    }
-
-    .button {
-      display: inline-flex;
-
-      justify-content: center;
-      align-items: center;
-
-      padding: 15px 24px;
-
-      border-radius: 100px;
-
-      font-size: 13px;
-      font-weight: 800;
-
-      transition: 0.25s;
-    }
-
-    .button-primary {
-      background: white;
-      color: black;
-    }
-
-    .button-primary:hover {
-      transform: translateY(-3px);
-    }
-
-    .button-secondary {
-      border: 1px solid var(--border);
-    }
-
-    .button-secondary:hover {
-      background: #151515;
-    }
-
-
-    /* =========================================
-       FEATURES
-    ========================================= */
-
-    .features {
-      max-width: 1250px;
-
-      margin: auto;
-
-      padding: 30px 5% 100px;
-
-      display: grid;
-
-      grid-template-columns: repeat(3, 1fr);
-
-      gap: 15px;
-    }
-
-    .feature {
-      background: #0d0d0d;
-
-      border: 1px solid var(--border);
-
-      border-radius: 18px;
-
-      padding: 25px;
-    }
-
-    .feature-number {
-      color: #555;
-
-      font-size: 11px;
-
-      margin-bottom: 17px;
-    }
-
-    .feature h3 {
-      font-size: 16px;
-
-      margin-bottom: 8px;
-    }
-
-    .feature p {
-      color: var(--muted);
-
-      font-size: 13px;
-    }
-
-
-    /* =========================================
-       PRODUCTS SECTION
-    ========================================= */
-
-    .products-section {
-      max-width: 1400px;
-
-      margin: auto;
-
-      padding: 70px 5% 120px;
-    }
-
-    .section-heading {
-      display: flex;
-
-      align-items: flex-end;
-      justify-content: space-between;
-
-      gap: 30px;
-
-      margin-bottom: 40px;
-    }
-
-    .section-heading h2 {
-      font-size: clamp(40px, 5vw, 65px);
-
-      line-height: 0.95;
-
-      letter-spacing: -3px;
-    }
-
-    .section-heading p {
-      max-width: 350px;
-
-      color: var(--muted);
-
-      font-size: 14px;
-    }
-
-
-    /* =========================================
-       PRODUCT GRID
-    ========================================= */
-
-    .products {
-      display: grid;
-
-      grid-template-columns: repeat(3, 1fr);
-
-      gap: 22px;
-    }
-
-    .product {
-      background: var(--card);
-
-      border: 1px solid var(--border);
-
-      border-radius: 22px;
-
-      overflow: hidden;
-
-      transition: 0.3s;
-    }
-
-    .product:hover {
-      transform: translateY(-6px);
-
-      background: var(--card-hover);
-
-      border-color: rgba(255,255,255,0.16);
-    }
-
-
-    /* =========================================
-       IMAGE SLIDER
-    ========================================= */
-
-    .product-gallery {
-      position: relative;
-
-      width: 100%;
-
-      aspect-ratio: 1 / 1;
-
-      overflow: hidden;
-
-      background: #191919;
-
-      touch-action: pan-y;
-    }
-
-    .gallery-track {
-      display: flex;
-
-      width: 100%;
-      height: 100%;
-
-      transition: transform 0.35s ease;
-    }
-
-    .gallery-image {
-      min-width: 100%;
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-
-      display: block;
-
-      user-select: none;
-
-      -webkit-user-drag: none;
-    }
-
-
-    /* =========================================
-       SLIDER ARROWS
-    ========================================= */
-
-    .gallery-arrow {
-      position: absolute;
-
-      top: 50%;
-
-      transform: translateY(-50%);
-
-      width: 38px;
-      height: 38px;
-
-      border-radius: 50%;
-
-      border: 1px solid rgba(255,255,255,0.18);
-
-      background: rgba(0,0,0,0.55);
-
-      color: white;
-
-      cursor: pointer;
-
-      display: flex;
-
-      justify-content: center;
-      align-items: center;
-
-      font-size: 18px;
-
-      backdrop-filter: blur(10px);
-
-      transition: 0.2s;
-
-      z-index: 5;
-    }
-
-    .gallery-arrow:hover {
-      background: rgba(255,255,255,0.15);
-    }
-
-    .gallery-prev {
-      left: 12px;
-    }
-
-    .gallery-next {
-      right: 12px;
-    }
-
-
-    /* =========================================
-       IMAGE COUNTER
-    ========================================= */
-
-    .image-counter {
-      position: absolute;
-
-      top: 13px;
-      right: 13px;
-
-      background: rgba(0,0,0,0.65);
-
-      padding: 6px 10px;
-
-      border-radius: 100px;
-
-      font-size: 10px;
-
-      color: white;
-
-      backdrop-filter: blur(10px);
-
-      z-index: 5;
-    }
-
-
-    /* =========================================
-       SLIDER DOTS
-    ========================================= */
-
-    .gallery-dots {
-      position: absolute;
-
-      bottom: 13px;
-      left: 50%;
-
-      transform: translateX(-50%);
-
-      display: flex;
-
-      gap: 6px;
-
-      z-index: 5;
-    }
-
-    .gallery-dot {
-      width: 6px;
-      height: 6px;
-
-      border-radius: 50%;
-
-      border: none;
-
-      background: rgba(255,255,255,0.4);
-
-      cursor: pointer;
-
-      padding: 0;
-
-      transition: 0.2s;
-    }
-
-    .gallery-dot.active {
-      width: 18px;
-
-      border-radius: 10px;
-
-      background: white;
-    }
-
-
-    /* =========================================
-       PRODUCT INFO
-    ========================================= */
-
-    .product-info {
-      padding: 22px;
-    }
-
-    .product-tag {
-      color: #666;
-
-      font-size: 10px;
-
-      letter-spacing: 1.5px;
-
-      text-transform: uppercase;
-
-      margin-bottom: 9px;
-    }
-
-    .product h3 {
-      font-size: 19px;
-
-      margin-bottom: 16px;
-    }
-
-
-    /* =========================================
-       FARBAUSWAHL
-    ========================================= */
-
-    .product-colors {
-      margin-bottom: 18px;
-    }
-
-    .color-title {
-      color: #666;
-
-      font-size: 10px;
-
-      letter-spacing: 1.3px;
-
-      text-transform: uppercase;
-
-      margin-bottom: 9px;
-    }
-
-    .color-options {
-      display: flex;
-
-      align-items: center;
-
-      gap: 9px;
-    }
-
-    .color-option {
-      width: 23px;
-      height: 23px;
-
-      padding: 0;
-
-      border-radius: 50%;
-
-      border: 2px solid rgba(255,255,255,0.25);
-
-      cursor: pointer;
-
-      transition: 0.2s;
-
-      position: relative;
-    }
-
-    .color-option:hover {
-      transform: scale(1.08);
-
-      border-color: rgba(255,255,255,0.7);
-    }
-
-    .color-option.active {
-      border-color: white;
-
-      box-shadow:
-        0 0 0 2px #111,
-        0 0 0 3px white;
-    }
-
-    .selected-color-name {
-      margin-top: 8px;
-
-      color: #777;
-
-      font-size: 10px;
-    }
-
-
-    /* =========================================
-       WHATSAPP BUTTON
-    ========================================= */
-
-    .whatsapp-button {
-      width: 100%;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      gap: 8px;
-
-      padding: 13px;
-
-      border-radius: 12px;
-
-      background: var(--whatsapp);
-
-      color: white;
-
-      font-size: 13px;
-
-      font-weight: 800;
-
-      transition: 0.2s;
-    }
-
-    .whatsapp-button:hover {
-      filter: brightness(1.08);
-
-      transform: translateY(-2px);
-    }
-
-
-    /* =========================================
-       CUSTOM REQUEST
-    ========================================= */
-
-    .request-section {
-      max-width: 1200px;
-
-      margin: 0 auto 120px;
-
-      padding: 0 5%;
-    }
-
-    .request-box {
-      padding: 70px 8%;
-
-      text-align: center;
-
-      border-radius: 28px;
-
-      border: 1px solid var(--border);
-
-      background:
-        radial-gradient(
-          circle at 50% 0%,
-          rgba(255,255,255,0.08),
-          transparent 55%
-        ),
-        #0d0d0d;
-    }
-
-    .request-box h2 {
-      font-size: clamp(40px, 5vw, 65px);
-
-      line-height: 0.95;
-
-      letter-spacing: -3px;
-
-      margin-bottom: 20px;
-    }
-
-    .request-box p {
-      max-width: 600px;
-
-      margin: 0 auto 30px;
-
-      color: var(--muted);
-
-      font-size: 15px;
-    }
-
-
-    /* =========================================
-       FOOTER
-    ========================================= */
-
-    footer {
-      border-top: 1px solid var(--border);
-
-      padding: 35px 5%;
-    }
-
-    .footer-inner {
-      max-width: 1400px;
-
-      margin: auto;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      gap: 20px;
-    }
-
-    footer p {
-      color: #555;
-
-      font-size: 11px;
-    }
-
-
-    /* =========================================
-       MOBILE
-    ========================================= */
-
-    @media (max-width: 900px) {
-
-      nav {
-        display: none;
-      }
-
-      .hero {
-        min-height: 650px;
-      }
-
-      .features {
-        grid-template-columns: 1fr;
-      }
-
-      .products {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .section-heading {
-        flex-direction: column;
-
-        align-items: flex-start;
-      }
-    }
-
-
-    @media (max-width: 600px) {
-
-      .navbar {
-        padding: 17px 5%;
-      }
-
-      .logo {
-        font-size: 20px;
-      }
-
-      .header-whatsapp {
-        padding: 9px 12px;
-
-        font-size: 10px;
-      }
-
-      .hero {
-        padding: 80px 5%;
-      }
-
-      .hero h1 {
-        font-size: 62px;
-
-        letter-spacing: -4px;
-      }
-
-      .hero p {
-        font-size: 15px;
-      }
-
-      .products {
-        grid-template-columns: 1fr;
-      }
-
-      .request-box {
-        padding: 50px 25px;
-      }
-
-      .footer-inner {
-        flex-direction: column;
-
-        text-align: center;
-      }
-
-      .gallery-arrow {
-        width: 34px;
-        height: 34px;
-      }
-
-    }
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HENTORIST — Collection</title>
+<meta name="description" content="HENTORIST — eigene Sneaker-Modelle, hochwertig verarbeitet.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+
+  body {
+    font-family:"Inter", sans-serif;
+    background:#080808;
+    color:#fff;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a { text-decoration:none; color:inherit; }
+  button { font-family:inherit; }
+
+  ::selection { background:#fff; color:#080808; }
+  :focus-visible { outline:2px solid #fff; outline-offset:3px; }
+
+  :root {
+    --card:#111111;
+    --card-hover:#161616;
+    --border:rgba(255,255,255,0.09);
+    --muted:#8f8f8c;
+    --muted-2:#5f5f5c;
+    --whatsapp:#25D366;
+  }
+
+  /* ---------------- header ---------------- */
+
+  header {
+    position:sticky; top:0; z-index:1000;
+    background:rgba(8,8,8,0.82);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border-bottom:1px solid var(--border);
+  }
+
+  .navbar {
+    max-width:1400px; margin:auto;
+    padding:19px 5%;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:25px;
+  }
+
+  .logo { font-size:22px; font-weight:800; letter-spacing:-0.5px; white-space:nowrap; }
+
+  nav { display:flex; align-items:center; gap:30px; }
+  nav a { color:#bdbdbd; font-size:13px; transition:.2s; }
+  nav a:hover { color:white; }
+
+  .header-actions { display:flex; align-items:center; gap:12px; }
+
+  .icon-link {
+    width:34px; height:34px;
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--border);
+    border-radius:50%;
+    transition:.2s;
+  }
+  .icon-link:hover { border-color:rgba(255,255,255,0.35); background:rgba(255,255,255,0.04); }
+  .icon-link svg { width:16px; height:16px; }
+
+  .header-whatsapp {
+    background:white; color:black;
+    padding:11px 18px;
+    border-radius:100px;
+    font-size:12px; font-weight:700;
+    transition:.2s;
+  }
+  .header-whatsapp:hover { transform:translateY(-2px); }
+
+  @media (max-width:900px) { nav { display:none; } }
+
+  /* ---------------- hero ---------------- */
+
+  .hero {
+    min-height:640px;
+    display:flex; justify-content:center; align-items:center;
+    text-align:center;
+    padding:100px 5%;
+    position:relative; overflow:hidden;
+  }
+
+  .hero::before {
+    content:"";
+    position:absolute;
+    width:700px; height:700px;
+    top:-320px; left:50%;
+    transform:translateX(-50%);
+    background:radial-gradient(circle, rgba(255,255,255,0.07), transparent 65%);
+  }
+
+  .hero-content { max-width:820px; position:relative; z-index:1; }
+
+  .eyebrow {
+    display:inline-block;
+    padding:8px 16px;
+    border:1px solid var(--border);
+    border-radius:100px;
+    color:#a3a3a0;
+    font-size:11px; letter-spacing:0.6px;
+    margin-bottom:26px;
+  }
+
+  .hero h1 {
+    font-size:clamp(52px, 9vw, 108px);
+    line-height:0.95;
+    letter-spacing:-3px;
+    font-weight:800;
+    margin-bottom:24px;
+  }
+
+  .hero h1 span { color:#666; font-weight:500; }
+
+  .hero p {
+    max-width:520px; margin:auto;
+    color:var(--muted);
+    font-size:16px;
+  }
+
+  .hero-buttons {
+    margin-top:34px;
+    display:flex; justify-content:center; gap:12px; flex-wrap:wrap;
+  }
+
+  .button {
+    display:inline-flex; justify-content:center; align-items:center;
+    padding:15px 26px;
+    border-radius:100px;
+    font-size:13px; font-weight:700;
+    transition:.25s;
+  }
+  .button-primary { background:white; color:black; }
+  .button-primary:hover { transform:translateY(-3px); }
+  .button-secondary { border:1px solid var(--border); }
+  .button-secondary:hover { background:#141414; }
+
+  /* ---------------- features ---------------- */
+
+  .features {
+    max-width:1250px; margin:auto;
+    padding:20px 5% 100px;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:15px;
+  }
+
+  .feature {
+    background:#0d0d0d;
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:26px;
+  }
+
+  .feature h3 { font-size:16px; font-weight:700; margin-bottom:8px; }
+  .feature p { color:var(--muted); font-size:13px; }
+
+  /* ---------------- collection ---------------- */
+
+  .products-section { max-width:1400px; margin:auto; padding:70px 5% 120px; }
+
+  .section-heading {
+    display:flex; align-items:flex-end; justify-content:space-between;
+    gap:30px; margin-bottom:42px;
+  }
+
+  .section-heading h2 {
+    font-size:clamp(38px, 5vw, 60px);
+    line-height:0.95;
+    letter-spacing:-2px;
+    font-weight:800;
+  }
+
+  .section-heading p { max-width:320px; color:var(--muted); font-size:14px; }
+
+  .products {
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:22px;
+  }
+
+  .product {
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:22px;
+    overflow:hidden;
+    transition:.3s;
+  }
+  .product:hover {
+    transform:translateY(-6px);
+    background:var(--card-hover);
+    border-color:rgba(255,255,255,0.18);
+  }
+
+  .product-gallery {
+    position:relative; width:100%;
+    aspect-ratio:1/1;
+    overflow:hidden;
+    background:#191919;
+    touch-action:pan-y;
+  }
+  .gallery-track { display:flex; width:100%; height:100%; transition:transform .35s ease; }
+  .gallery-image { min-width:100%; width:100%; height:100%; object-fit:cover; display:block; user-select:none; -webkit-user-drag:none; }
+
+  .gallery-arrow {
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:38px; height:38px; border-radius:50%;
+    border:1px solid rgba(255,255,255,0.18);
+    background:rgba(0,0,0,0.55);
+    color:white; cursor:pointer;
+    display:flex; justify-content:center; align-items:center;
+    font-size:18px;
+    backdrop-filter:blur(10px);
+    transition:.2s; z-index:5;
+  }
+  .gallery-arrow:hover { background:rgba(255,255,255,0.15); }
+  .gallery-prev { left:12px; }
+  .gallery-next { right:12px; }
+
+  .image-counter {
+    position:absolute; top:13px; right:13px;
+    background:rgba(0,0,0,0.65);
+    padding:6px 10px; border-radius:100px;
+    font-size:10px; color:white;
+    backdrop-filter:blur(10px);
+    z-index:5;
+  }
+
+  .gallery-dots { position:absolute; bottom:13px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:5; }
+  .gallery-dot { width:6px; height:6px; border-radius:50%; border:none; background:rgba(255,255,255,0.4); cursor:pointer; padding:0; transition:.2s; }
+  .gallery-dot.active { width:18px; border-radius:10px; background:white; }
+
+  .product-info { padding:22px; }
+
+  .product-tag {
+    color:var(--muted-2);
+    font-size:10.5px;
+    letter-spacing:0.8px;
+    margin-bottom:9px;
+  }
+
+  .product-title-row {
+    display:flex; align-items:baseline; justify-content:space-between; gap:10px;
+    margin-bottom:16px;
+  }
+
+  .product h3 {
+    font-size:19px; font-weight:700;
+  }
+  .product h3.placeholder { color:#6b6b68; font-weight:500; font-style:italic; font-size:16px; }
+
+  .product-price { font-size:15px; font-weight:700; color:#fff; white-space:nowrap; }
+
+  .product-colors { margin-bottom:18px; }
+
+  .color-title { color:var(--muted-2); font-size:10px; letter-spacing:0.6px; margin-bottom:9px; }
+
+  .color-options { display:flex; align-items:center; gap:9px; }
+
+  .color-option {
+    width:23px; height:23px; padding:0;
+    border-radius:50%;
+    border:2px solid rgba(255,255,255,0.25);
+    cursor:pointer; transition:.2s; position:relative;
+  }
+  .color-option:hover { transform:scale(1.08); border-color:rgba(255,255,255,0.7); }
+  .color-option.active { border-color:white; box-shadow:0 0 0 2px #111, 0 0 0 3px white; }
+
+  .selected-color-name { margin-top:8px; color:#777; font-size:10px; }
+
+  .whatsapp-button {
+    width:100%;
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    padding:13px; border-radius:12px;
+    background:var(--whatsapp); color:white;
+    font-size:13px; font-weight:800;
+    transition:.2s;
+  }
+  .whatsapp-button:hover { filter:brightness(1.08); transform:translateY(-2px); }
+  .whatsapp-button svg { width:14px; height:14px; }
+
+  /* ---------------- request ---------------- */
+
+  .request-section { max-width:1200px; margin:0 auto 120px; padding:0 5%; }
+
+  .request-box {
+    padding:70px 8%; text-align:center;
+    border-radius:28px;
+    border:1px solid var(--border);
+    background:radial-gradient(circle at 50% 0%, rgba(255,255,255,0.08), transparent 55%), #0d0d0d;
+  }
+
+  .request-box h2 { font-size:clamp(38px, 5vw, 60px); line-height:0.95; letter-spacing:-2px; font-weight:800; margin-bottom:20px; }
+  .request-box p { max-width:580px; margin:0 auto 30px; color:var(--muted); font-size:15px; }
+  .request-actions { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; }
+
+  /* ---------------- footer ---------------- */
+
+  footer { border-top:1px solid var(--border); padding:35px 5%; }
+  .footer-inner { max-width:1400px; margin:auto; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+  footer p { color:#555; font-size:11px; }
+  .footer-social { display:flex; gap:10px; }
+
+  /* ---------------- mobile ---------------- */
+
+  @media (max-width:900px) {
+    .hero { min-height:580px; }
+    .features { grid-template-columns:1fr; }
+    .products { grid-template-columns:repeat(2, 1fr); }
+    .section-heading { flex-direction:column; align-items:flex-start; }
+  }
+
+  @media (max-width:600px) {
+    .navbar { padding:17px 5%; }
+    .logo { font-size:19px; }
+    .header-whatsapp { padding:9px 13px; font-size:10px; }
+    .hero { padding:80px 5%; }
+    .hero h1 { font-size:56px; letter-spacing:-2px; }
+    .hero p { font-size:15px; }
+    .products { grid-template-columns:1fr; }
+    .request-box { padding:50px 25px; }
+    .footer-inner { flex-direction:column; text-align:center; }
+    .gallery-arrow { width:34px; height:34px; }
+  }
+
+</style>
 </head>
-
 
 <body>
 
-
-  <!-- =========================================
-       HEADER
-  ========================================== -->
-
-  <header>
-
-    <div class="navbar">
-
-      <a href="#" class="logo">
-        FAST<span>FASHION</span>
+<header>
+  <div class="navbar">
+    <a href="#" class="logo">HENTORIST</a>
+    <nav>
+      <a href="#collection">Collection</a>
+      <a href="#about">About</a>
+      <a href="#request">Wunschmodell</a>
+    </nav>
+    <div class="header-actions">
+      <a class="icon-link" href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></svg>
       </a>
+      <a class="header-whatsapp" href="#" onclick="openGeneralWhatsApp(); return false;">Wunschmodell →</a>
+    </div>
+  </div>
+</header>
 
-      <nav>
+<main>
 
-        <a href="#collection">
-          Collection
-        </a>
+  <section class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">Fastfashion — eine gute Wahl</div>
+      <h1>HENTORIST<br><span>Collection.</span></h1>
+      <p>
+        Die Qualität enstpricht einer exzellenten Vearbeitung!
+      </p>
+      <div class="hero-buttons">
+        <a href="#collection" class="button button-primary">Collection entdecken</a>
+        <a href="#request" class="button button-secondary">Wunschmodell suchen</a>
+      </div>
+    </div>
+  </section>
 
-        <a href="#about">
-          About
-        </a>
+  <section class="features" id="about">
+    <div class="feature">
+      <h3>Eigenes Design</h3>
+      <p>Jedes Modell ist 1:1 nachgefertigt.</p>
+    </div>
+    <div class="feature">
+      <h3>Kleine Auflage</h3>
+      <p>1:1 Qualität.</p>
+    </div>
+    <div class="feature">
+      <h3>Direkter Kontakt</h3>
+      <p>Fragen zu einem Modell? Schreib uns direkt über WhatsApp oder Instagram.</p>
+    </div>
+  </section>
 
-        <a href="#request">
-          Wunschmodell
-        </a>
+  <section class="products-section" id="collection">
+    <div class="section-heading">
+      <h2>THE<br>COLLECTION</h2>
+      <p>Für Verfügbarkeit direkt über WhatsApp anfragen.</p>
+    </div>
+    <div class="products" id="productsContainer"></div>
+  </section>
 
-      </nav>
+  <section class="request-section" id="request">
+    <div class="request-box">
+      <div class="eyebrow">NOT IN THE COLLECTION?</div>
+      <h2>DEIN<br>WUNSCHMODELL.</h2>
+      <p>
+        Du suchst ein bestimmtes Modell ?
+        Schick uns einfach ein Foto über WhatsApp oder Instagram.
+      </p>
+      <div class="request-actions">
+        <a class="button button-primary" href="#" onclick="openGeneralWhatsApp(); return false;">Foto über WhatsApp senden →</a>
+        <a class="button button-secondary" href="https://instagram.com/" target="_blank" rel="noopener">Auf Instagram schreiben</a>
+      </div>
+    </div>
+  </section>
 
-      <a
-        class="header-whatsapp"
-        href="#"
-        onclick="openGeneralWhatsApp(); return false;"
-      >
-        Wunschmodell →
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="logo">HENTORIST</div>
+    <p>© 2026 HENTORIST</p>
+    <div class="footer-social">
+      <a class="icon-link" href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></svg>
       </a>
-
+      <a class="icon-link" href="#" onclick="openGeneralWhatsApp(); return false;" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.2L2 22l4.9-1.3C8.5 21.6 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.4 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-1-.3-1.6-.6-2.8-1.2-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.5.7 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.6.3.1.5.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.8.8.3.1.4.2.5.3.1.2.1.9-.1 1.5z"/></svg>
+      </a>
     </div>
-
-  </header>
-
-
-
-  <!-- =========================================
-       HERO
-  ========================================== -->
-
-  <main>
-
-    <section class="hero">
-
-      <div class="hero-content">
-
-        <div class="eyebrow">
-          FAST FASHION — PREMIUM SELECTION
-        </div>
-
-        <h1>
-          FAST<br>
-          <span>FASHION.</span>
-        </h1>
-
-        <p>
-          Ausgewählte Fashion-Styles mit hochwertiger
-          Verarbeitung, modernen Designs und sorgfältig
-          ausgewählten Details.
-        </p>
-
-        <div class="hero-buttons">
-
-          <a
-            href="#collection"
-            class="button button-primary"
-          >
-            Collection entdecken
-          </a>
-
-          <a
-            href="#request"
-            class="button button-secondary"
-          >
-            Wunschmodell suchen
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =========================================
-         FEATURES
-    ========================================== -->
-
-    <section
-      class="features"
-      id="about"
-    >
-
-      <div class="feature">
-
-        <div class="feature-number">
-          01 / QUALITY
-        </div>
-
-        <h3>
-          Premium-Qualität
-        </h3>
-
-        <p>
-          Sorgfältig ausgewählte Produkte
-          mit Fokus auf Verarbeitung,
-          Materialien und Details.
-        </p>
-
-      </div>
-
-
-      <div class="feature">
-
-        <div class="feature-number">
-          02 / STYLE
-        </div>
-
-        <h3>
-          Aktuelle Styles
-        </h3>
-
-        <p>
-          Moderne Designs und angesagte
-          Fashion-Styles für einen
-          cleanen Look.
-        </p>
-
-      </div>
-
-
-      <div class="feature">
-
-        <div class="feature-number">
-          03 / SERVICE
-        </div>
-
-        <h3>
-          Direkter Kontakt
-        </h3>
-
-        <p>
-          Fragen zu einem Produkt?
-          Schreib uns direkt über WhatsApp.
-        </p>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =========================================
-         COLLECTION
-    ========================================== -->
-
-    <section
-      class="products-section"
-      id="collection"
-    >
-
-      <div class="section-heading">
-
-        <h2>
-          THE<br>
-          COLLECTION
-        </h2>
-
-        <p>
-          Entdecke unsere aktuelle Auswahl.
-          Für Preise und Verfügbarkeit einfach
-          direkt über WhatsApp anfragen.
-        </p>
-
-      </div>
-
-
-      <div
-        class="products"
-        id="productsContainer"
-      >
-      </div>
-
-    </section>
-
-
-
-    <!-- =========================================
-         WUNSCHMODELL
-    ========================================== -->
-
-    <section
-      class="request-section"
-      id="request"
-    >
-
-      <div class="request-box">
-
-        <div class="eyebrow">
-          NOT IN THE COLLECTION?
-        </div>
-
-        <h2>
-          DEIN<br>
-          WUNSCHMODELL.
-        </h2>
-
-        <p>
-          Du suchst ein bestimmtes Modell, das du hier
-          nicht findest? Schick uns einfach ein Foto
-          über WhatsApp. Wir prüfen gerne, ob wir dein
-          Wunschmodell finden können.
-        </p>
-
-        <a
-          class="button button-primary"
-          href="#"
-          onclick="openGeneralWhatsApp(); return false;"
-        >
-          Foto über WhatsApp senden →
-        </a>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-
-  <!-- =========================================
-       FOOTER
-  ========================================== -->
-
-  <footer>
-
-    <div class="footer-inner">
-
-      <div class="logo">
-        FAST<span>FASHION</span>
-      </div>
-
-      <p>
-        © 2026 FAST FASHION
-      </p>
-
-      <p>
-        Premium Fashion Selection
-      </p>
-
-    </div>
-
-  </footer>
-
-
-
-  <script>
-
-    /* =====================================================
-       WHATSAPP-NUMMER
-    ===================================================== */
-
-    const WHATSAPP_NUMBER = "4915737409159";
-
-
-    /* =====================================================
-       PRODUKTE
-       =====================================================
-
-       WICHTIG:
-
-       Jede Farbe bekommt ihre eigenen Bilder.
-
-       Beispiel mit 2 Farben:
-
-       colors: [
-
-         {
-           name: "Schwarz",
-           value: "#111111",
-
-           images: [
-             "schwarz-1.jpg",
-             "schwarz-2.jpg",
-             "schwarz-3.jpg"
-           ]
-         },
-
-         {
-           name: "Weiß",
-           value: "#ffffff",
-
-           images: [
-             "weiss-1.jpg",
-             "weiss-2.jpg",
-             "weiss-3.jpg"
-           ]
-         }
-
-       ]
-
-    ===================================================== */
-
-
-    const products = [
-
-      {
-        name: "Prada America’s Cup Sneaker aus Lackleder und Funktionsgewebe",
-
-        category: "Sneaker / 01",
-
-        colors: [
-          {
-            name: "Schwarz",
-            value: "#111111",
-
-            images: [
-              "Images/Prada-Cups-Schwarz-1.PNG",
-              "Images/prada-Cups_Schwarz-2.PNG",
-            ]
-          },
-          {
-            name: "Blau-Grau",
-            value: "#65717c",
-            images: [
-              "images/Prada-Cups-Blau Grau-1PNG",
-              ]
-          }
-          ]
-      },
-
-        name: "Hermes Bouncing",
-
-        category: "Sneaker / 02",
-
-        colors: [
-
-          {
-            name: "Schwarz",
-
-            value: "#111111",
-
-            images: [
-              "", 
-            ]
-          },
-          {
-            name: "Beige"
-            value: "#D6C6A5",
-          images: [
-            "Images/Hermes-Bouncing-Beige1.PNG",
-          ]
-      }
+  </div>
+</footer>
+
+<script>
+
+  const WHATSAPP_NUMBER = "+4915737409159";
+  const INSTAGRAM_HANDLE = "https://www.instagram.com/fast.fashion79/"; // hier deinen echten Instagram-Handle eintragen
+
+  /* =====================================================
+     PRODUKTE
+     -> "name" bewusst leer gelassen, trägst du später ein.
+     -> "price" mit Platzhalterwert, bitte anpassen.
+     -> Jede Farbe hat ihr eigenes images-Array.
+  ===================================================== */
+
+  const products = [
+    {
+      name: "Hermes Bouncing",
+      category: "Sneaker / Modell A",
+      price: "119 €",
+      colors: [
+        { name: "Schwarz",   value: "#111111", images: ["Hermes-Bouncing-Beige1.PNG",hermes-Bouncing-Beige2.PNG] },
+        { name: "Blau-Grau", value: "#65717c", images: [""] }
       ]
     },
-
-      {
-        name: "Asics",
-
-        category: "Sneaker / 03",
-
-        colors: [
-
-          {
-            name: "Silber/Graphite Grey",
-
-            value: "#B8B8B8",
-
-            images: [
-              "",
-               ]
-      },
-        {
-          name: "White/Pure Gold",
-          value: "#686868",
-          images: [
-            "",
-                   
-            ]
-      },
-        {
-          name: "White Midnight",
-          value: "#191970",
-            ]
-          }
-
-        ]
-      },
-
-
-      {
-        name: "Chanel CC Runner Metallic",
-
-        category: "Collection / 04",
-
-        colors: [
-
-          {
-            name: "Metallic",
-
-            value: "#b7b7b7",
-
-            images: [
-              "1Chanel CC Runner Metallic.jpg",
-              "2Chanel CC Runner Metallic.jpg",
-              "3Chanel CC Runner Metallic.jpg",
-              "4Chanel CC Runner Metallic.jpg",
-              "5Chanel CC Runner Metallic.jpg",
-              "6Chanel CC Runner Metallic.jpg",
-              "7Chanel CC Runner Metallic.jpg",
-              "8Chanel CC Runner Metallic.jpg"
-            ]
-          }
-
-        ]
-      },
-
-
-      /* =================================================
-         BEISPIEL MIT 2 FARBEN
-         ================================================= */
-
-      {
-        name: "Premium Model 05",
-
-        category: "Collection / 05",
-
-        colors: [
-
-          {
-            name: "Schwarz",
-
-            value: "#111111",
-
-            images: [
-              "images/product5-black-1.jpg",
-              "images/product5-black-2.jpg",
-              "images/product5-black-3.jpg",
-              "images/product5-black-4.jpg"
-            ]
-          },
-
-
-          {
-            name: "Weiß",
-
-            value: "#ffffff",
-
-            images: [
-              "images/product5-white-1.jpg",
-              "images/product5-white-2.jpg",
-              "images/product5-white-3.jpg",
-              "images/product5-white-4.jpg"
-            ]
-          }
-
-        ]
-      },
-
-
-      {
-        name: "Premium Model 06",
-
-        category: "Collection / 06",
-
-        colors: [
-
-          {
-            name: "Schwarz",
-
-            value: "#111111",
-
-            images: [
-              "images/product6-1.jpg",
-              "images/product6-2.jpg",
-              "images/product6-3.jpg",
-              "images/product6-4.jpg"
-            ]
-          }
-
-        ]
-      }
-
-    ];
-
-
-
-    /* =====================================================
-       AKTUELL AUSGEWÄHLTE FARBE
-    ===================================================== */
-
-    const currentColors =
-      new Array(products.length).fill(0);
-
-
-
-    /* =====================================================
-       AKTUELLES BILD
-    ===================================================== */
-
-    const currentImages =
-      new Array(products.length).fill(0);
-
-
-
-    /* =====================================================
-       PRODUKTE RENDERN
-    ===================================================== */
-
-    const productsContainer =
-      document.getElementById("productsContainer");
-
-
-    products.forEach((product, productIndex) => {
-
-      const productElement =
-        document.createElement("article");
-
-
-      productElement.className =
-        "product";
-
-
-      const selectedColor =
-        product.colors[0];
-
-
-      /*
-        BILDER
-      */
-
-      const imagesHTML =
-        selectedColor.images
-          .map((image, imageIndex) => {
-
-            return `
-              <img
-                class="gallery-image"
-                src="${image}"
-                alt="${product.name} — ${selectedColor.name} — Bild ${imageIndex + 1}"
-                draggable="false"
-              >
-            `;
-
-          })
-          .join("");
-
-
-      /*
-        DOTS
-      */
-
-      const dotsHTML =
-        selectedColor.images
-          .map((_, imageIndex) => {
-
-            return `
-              <button
-                class="gallery-dot ${
-                  imageIndex === 0 ? "active" : ""
-                }"
-                onclick="goToImage(
-                  ${productIndex},
-                  ${imageIndex}
-                )"
-                aria-label="Bild ${imageIndex + 1}"
-              ></button>
-            `;
-
-          })
-          .join("");
-
-
-      /*
-        FARBEN
-      */
-
-      const colorsHTML =
-        product.colors.length > 1
-          ? `
-
-            <div class="product-colors">
-
-              <div class="color-title">
-                Farbe
-              </div>
-
-
-              <div class="color-options">
-
-                ${product.colors
-                  .map((color, colorIndex) => {
-
-                    return `
-                      <button
-                        class="color-option ${
-                          colorIndex === 0
-                            ? "active"
-                            : ""
-                        }"
-                        style="
-                          background: ${color.value};
-                        "
-                        onclick="
-                          changeColor(
-                            ${productIndex},
-                            ${colorIndex}
-                          )
-                        "
-                        aria-label="${color.name}"
-                        title="${color.name}"
-                      ></button>
-                    `;
-
-                  })
-                  .join("")}
-
-              </div>
-
-
-              <div
-                class="selected-color-name"
-                id="selected-color-${productIndex}"
-              >
-                ${selectedColor.name}
-              </div>
-
-            </div>
-
-          `
-          : "";
-
-
-
-      /*
-        PRODUKT HTML
-      */
-
-      productElement.innerHTML = `
-
-        <div
-          class="product-gallery"
-          id="gallery-${productIndex}"
-        >
-
-          <div
-            class="gallery-track"
-            id="track-${productIndex}"
-          >
-
-            ${imagesHTML}
-
-          </div>
-
-
-          ${
-            selectedColor.images.length > 1
-              ? `
-
-                <button
-                  class="gallery-arrow gallery-prev"
-                  onclick="
-                    previousImage(
-                      ${productIndex}
-                    )
-                  "
-                  aria-label="Vorheriges Bild"
-                >
-                  ‹
-                </button>
-
-
-                <button
-                  class="gallery-arrow gallery-next"
-                  onclick="
-                    nextImage(
-                      ${productIndex}
-                    )
-                  "
-                  aria-label="Nächstes Bild"
-                >
-                  ›
-                </button>
-
-
-                <div class="image-counter">
-
-                  <span
-                    id="counter-${productIndex}"
-                  >
-                    1 / ${selectedColor.images.length}
-                  </span>
-
-                </div>
-
-
-                <div class="gallery-dots">
-
-                  ${dotsHTML}
-
-                </div>
-
-              `
-              : ""
-          }
-
+    {
+      name: "",
+      category: "Sneaker / Modell B",
+      price: "129 €",
+      colors: [
+        { name: "Schwarz", value: "#111111", images: [""] },
+        { name: "Beige",   value: "#D6C6A5", images: [""] }
+      ]
+    },
+    {
+      name: "",
+      category: "Sneaker / Modell C",
+      price: "109 €",
+      colors: [
+        { name: "Silber/Graphite Grey", value: "#B8B8B8", images: [""] },
+        { name: "White/Pure Gold",      value: "#686868", images: [""] },
+        { name: "White Midnight",       value: "#191970", images: [""] }
+      ]
+    },
+    {
+      name: "",
+      category: "Collection / Modell D",
+      price: "139 €",
+      colors: [
+        { name: "Metallic", value: "#b7b7b7", images: ["", "", "", "", "", "", "", ""] }
+      ]
+    },
+    {
+      name: "",
+      category: "Collection / Modell E",
+      price: "119 €",
+      colors: [
+        { name: "Schwarz", value: "#111111", images: ["", "", "", ""] },
+        { name: "Weiß",    value: "#ffffff", images: ["", "", "", ""] }
+      ]
+    },
+    {
+      name: "",
+      category: "Collection / Modell F",
+      price: "99 €",
+      colors: [
+        { name: "Schwarz", value: "#111111", images: ["", "", "", ""] }
+      ]
+    }
+  ];
+
+  const currentColors = new Array(products.length).fill(0);
+  const currentImages = new Array(products.length).fill(0);
+
+  const productsContainer = document.getElementById("productsContainer");
+
+  products.forEach((product, productIndex) => {
+
+    const productElement = document.createElement("article");
+    productElement.className = "product";
+
+    const selectedColor = product.colors[0];
+
+    const imagesHTML = selectedColor.images
+      .map((image, imageIndex) => `
+        <img class="gallery-image" src="${image}" alt="${product.name || 'HENTORIST Modell'} — ${selectedColor.name} — Bild ${imageIndex + 1}" draggable="false">
+      `)
+      .join("");
+
+    const dotsHTML = selectedColor.images
+      .map((_, imageIndex) => `
+        <button class="gallery-dot ${imageIndex === 0 ? "active" : ""}" onclick="goToImage(${productIndex}, ${imageIndex})" aria-label="Bild ${imageIndex + 1}"></button>
+      `)
+      .join("");
+
+    const colorsHTML = product.colors.length > 1 ? `
+      <div class="product-colors">
+        <div class="color-title">Farbe</div>
+        <div class="color-options">
+          ${product.colors.map((color, colorIndex) => `
+            <button class="color-option ${colorIndex === 0 ? "active" : ""}" style="background:${color.value};" onclick="changeColor(${productIndex}, ${colorIndex})" aria-label="${color.name}" title="${color.name}"></button>
+          `).join("")}
         </div>
+        <div class="selected-color-name" id="selected-color-${productIndex}">${selectedColor.name}</div>
+      </div>
+    ` : "";
 
+    const displayName = product.name && product.name.trim().length > 0
+      ? product.name
+      : "Modellname folgt";
 
-        <div class="product-info">
-
-          <div class="product-tag">
-            ${product.category}
-          </div>
-
-
-          <h3>
-            ${product.name}
-          </h3>
-
-
-          ${colorsHTML}
-
-
-          <a
-            class="whatsapp-button"
-            href="#"
-            onclick="
-              contactWhatsApp(
-                ${productIndex}
-              );
-              return false;
-            "
-          >
-            WhatsApp · Preis anfragen
-          </a>
-
+    productElement.innerHTML = `
+      <div class="product-gallery" id="gallery-${productIndex}">
+        <div class="gallery-track" id="track-${productIndex}">
+          ${imagesHTML}
         </div>
-
-      `;
-
-
-      productsContainer.appendChild(
-        productElement
-      );
-
-    });
-
-
-
-    /* =====================================================
-       FARBE WECHSELN
-    ===================================================== */
-
-    function changeColor(
-      productIndex,
-      colorIndex
-    ) {
-
-      currentColors[productIndex] =
-        colorIndex;
-
-
-      currentImages[productIndex] =
-        0;
-
-
-      const product =
-        products[productIndex];
-
-
-      const color =
-        product.colors[colorIndex];
-
-
-      const gallery =
-        document.getElementById(
-          `gallery-${productIndex}`
-        );
-
-
-      const track =
-        document.getElementById(
-          `track-${productIndex}`
-        );
-
-
-      /*
-        NEUE BILDER
-      */
-
-      track.innerHTML =
-        color.images
-          .map((image, imageIndex) => {
-
-            return `
-              <img
-                class="gallery-image"
-                src="${image}"
-                alt="${product.name} — ${color.name} — Bild ${imageIndex + 1}"
-                draggable="false"
-              >
-            `;
-
-          })
-          .join("");
-
-
-      track.style.transform =
-        "translateX(0%)";
-
-
-      /*
-        ALTE NAVIGATION ENTFERNEN
-      */
-
-      gallery
-        .querySelectorAll(
-          ".gallery-arrow, .image-counter, .gallery-dots"
-        )
-        .forEach(element => {
-
-          element.remove();
-
-        });
-
-
-
-      /*
-        NEUE NAVIGATION
-      */
-
-      if (color.images.length > 1) {
-
-        const dotsHTML =
-          color.images
-            .map((_, imageIndex) => {
-
-              return `
-                <button
-                  class="gallery-dot ${
-                    imageIndex === 0
-                      ? "active"
-                      : ""
-                  }"
-                  onclick="
-                    goToImage(
-                      ${productIndex},
-                      ${imageIndex}
-                    )
-                  "
-                  aria-label="
-                    Bild ${imageIndex + 1}
-                  "
-                ></button>
-              `;
-
-            })
-            .join("");
-
-
-        gallery.insertAdjacentHTML(
-          "beforeend",
-          `
-
-            <button
-              class="gallery-arrow gallery-prev"
-              onclick="
-                previousImage(
-                  ${productIndex}
-                )
-              "
-              aria-label="Vorheriges Bild"
-            >
-              ‹
-            </button>
-
-
-            <button
-              class="gallery-arrow gallery-next"
-              onclick="
-                nextImage(
-                  ${productIndex}
-                )
-              "
-              aria-label="Nächstes Bild"
-            >
-              ›
-            </button>
-
-
-            <div class="image-counter">
-
-              <span
-                id="counter-${productIndex}"
-              >
-                1 / ${color.images.length}
-              </span>
-
-            </div>
-
-
-            <div class="gallery-dots">
-
-              ${dotsHTML}
-
-            </div>
-
-          `
-        );
-
-      }
-
-
-
-      /*
-        AKTIVE FARBE
-      */
-
-      const productElement =
-        gallery.closest(".product");
-
-
-      const colorOptions =
-        productElement.querySelectorAll(
-          ".color-option"
-        );
-
-
-      colorOptions.forEach(
-        (button, index) => {
-
-          button.classList.toggle(
-            "active",
-            index === colorIndex
-          );
-
-        }
-      );
-
-
-
-      /*
-        FARBNAME UNTEN ÄNDERN
-      */
-
-      const selectedColorName =
-        document.getElementById(
-          `selected-color-${productIndex}`
-        );
-
-
-      if (selectedColorName) {
-
-        selectedColorName.textContent =
-          color.name;
-
-      }
+        ${selectedColor.images.length > 1 ? `
+          <button class="gallery-arrow gallery-prev" onclick="previousImage(${productIndex})" aria-label="Vorheriges Bild">‹</button>
+          <button class="gallery-arrow gallery-next" onclick="nextImage(${productIndex})" aria-label="Nächstes Bild">›</button>
+          <div class="image-counter"><span id="counter-${productIndex}">1 / ${selectedColor.images.length}</span></div>
+          <div class="gallery-dots">${dotsHTML}</div>
+        ` : ""}
+      </div>
+
+      <div class="product-info">
+        <div class="product-tag">${product.category}</div>
+        <div class="product-title-row">
+          <h3 class="${product.name ? "" : "placeholder"}" id="name-${productIndex}">${displayName}</h3>
+          <div class="product-price">${product.price}</div>
+        </div>
+        ${colorsHTML}
+        <a class="whatsapp-button" href="#" onclick="contactWhatsApp(${productIndex}); return false;">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.2L2 22l4.9-1.3C8.5 21.6 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.4 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-1-.3-1.6-.6-2.8-1.2-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.5.7 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.6.3.1.5.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.8.8.3.1.4.2.5.3.1.2.1.9-.1 1.5z"/></svg>
+          WhatsApp · Preis anfragen
+        </a>
+      </div>
+    `;
+
+    productsContainer.appendChild(productElement);
+
+  });
+
+  function changeColor(productIndex, colorIndex) {
+
+    currentColors[productIndex] = colorIndex;
+    currentImages[productIndex] = 0;
+
+    const product = products[productIndex];
+    const color = product.colors[colorIndex];
+
+    const gallery = document.getElementById(`gallery-${productIndex}`);
+    const track = document.getElementById(`track-${productIndex}`);
+
+    track.innerHTML = color.images
+      .map((image, imageIndex) => `
+        <img class="gallery-image" src="${image}" alt="${product.name || 'HENTORIST Modell'} — ${color.name} — Bild ${imageIndex + 1}" draggable="false">
+      `)
+      .join("");
+
+    track.style.transform = "translateX(0%)";
+
+    gallery.querySelectorAll(".gallery-arrow, .image-counter, .gallery-dots").forEach(el => el.remove());
+
+    if (color.images.length > 1) {
+
+      const dotsHTML = color.images
+        .map((_, imageIndex) => `
+          <button class="gallery-dot ${imageIndex === 0 ? "active" : ""}" onclick="goToImage(${productIndex}, ${imageIndex})" aria-label="Bild ${imageIndex + 1}"></button>
+        `)
+        .join("");
+
+      gallery.insertAdjacentHTML("beforeend", `
+        <button class="gallery-arrow gallery-prev" onclick="previousImage(${productIndex})" aria-label="Vorheriges Bild">‹</button>
+        <button class="gallery-arrow gallery-next" onclick="nextImage(${productIndex})" aria-label="Nächstes Bild">›</button>
+        <div class="image-counter"><span id="counter-${productIndex}">1 / ${color.images.length}</span></div>
+        <div class="gallery-dots">${dotsHTML}</div>
+      `);
 
     }
 
-
-
-    /* =====================================================
-       GALERIE AKTUALISIEREN
-    ===================================================== */
-
-    function updateGallery(
-      productIndex
-    ) {
-
-      const product =
-        products[productIndex];
-
-
-      const color =
-        product.colors[
-          currentColors[productIndex]
-        ];
-
-
-      const current =
-        currentImages[productIndex];
-
-
-      const track =
-        document.getElementById(
-          `track-${productIndex}`
-        );
-
-
-      track.style.transform =
-        `translateX(-${current * 100}%)`;
-
-
-      /*
-        COUNTER
-      */
-
-      const counter =
-        document.getElementById(
-          `counter-${productIndex}`
-        );
-
-
-      if (counter) {
-
-        counter.textContent =
-          `${current + 1} / ${color.images.length}`;
-
-      }
-
-
-
-      /*
-        DOTS
-      */
-
-      const gallery =
-        document.getElementById(
-          `gallery-${productIndex}`
-        );
-
-
-      const dots =
-        gallery.querySelectorAll(
-          ".gallery-dot"
-        );
-
-
-      dots.forEach(
-        (dot, index) => {
-
-          dot.classList.toggle(
-            "active",
-            index === current
-          );
-
-        }
-      );
-
-    }
-
-
-
-    /* =====================================================
-       NÄCHSTES BILD
-    ===================================================== */
-
-    function nextImage(
-      productIndex
-    ) {
-
-      const product =
-        products[productIndex];
-
-
-      const color =
-        product.colors[
-          currentColors[productIndex]
-        ];
-
-
-      const total =
-        color.images.length;
-
-
-      if (total <= 1) {
-        return;
-      }
-
-
-      currentImages[productIndex] =
-        (
-          currentImages[productIndex] + 1
-        ) % total;
-
-
-      updateGallery(
-        productIndex
-      );
-
-    }
-
-
-
-    /* =====================================================
-       VORHERIGES BILD
-    ===================================================== */
-
-    function previousImage(
-      productIndex
-    ) {
-
-      const product =
-        products[productIndex];
-
-
-      const color =
-        product.colors[
-          currentColors[productIndex]
-        ];
-
-
-      const total =
-        color.images.length;
-
-
-      if (total <= 1) {
-        return;
-      }
-
-
-      currentImages[productIndex] =
-        (
-          currentImages[productIndex] - 1 + total
-        ) % total;
-
-
-      updateGallery(
-        productIndex
-      );
-
-    }
-
-
-
-    /* =====================================================
-       DIREKT ZU EINEM BILD
-    ===================================================== */
-
-    function goToImage(
-      productIndex,
-      imageIndex
-    ) {
-
-      currentImages[productIndex] =
-        imageIndex;
-
-
-      updateGallery(
-        productIndex
-      );
-
-    }
-
-
-
-    /* =====================================================
-       WHATSAPP — PRODUKT
-    ===================================================== */
-
-    function contactWhatsApp(
-      productIndex
-    ) {
-
-      const product =
-        products[productIndex];
-
-
-      const colorIndex =
-        currentColors[productIndex];
-
-
-      const selectedColor =
-        product.colors[colorIndex];
-
-
-      const message =
-        `Hallo FAST FASHION,
+    const productElement = gallery.closest(".product");
+    const colorOptions = productElement.querySelectorAll(".color-option");
+    colorOptions.forEach((btn, i) => btn.classList.toggle("active", i === colorIndex));
+
+    const selectedColorName = document.getElementById(`selected-color-${productIndex}`);
+    if (selectedColorName) selectedColorName.textContent = color.name;
+
+  }
+
+  function updateGallery(productIndex) {
+
+    const product = products[productIndex];
+    const color = product.colors[currentColors[productIndex]];
+    const current = currentImages[productIndex];
+
+    const track = document.getElementById(`track-${productIndex}`);
+    track.style.transform = `translateX(-${current * 100}%)`;
+
+    const counter = document.getElementById(`counter-${productIndex}`);
+    if (counter) counter.textContent = `${current + 1} / ${color.images.length}`;
+
+    const gallery = document.getElementById(`gallery-${productIndex}`);
+    const dots = gallery.querySelectorAll(".gallery-dot");
+    dots.forEach((dot, i) => dot.classList.toggle("active", i === current));
+
+  }
+
+  function nextImage(productIndex) {
+    const product = products[productIndex];
+    const color = product.colors[currentColors[productIndex]];
+    const total = color.images.length;
+    if (total <= 1) return;
+    currentImages[productIndex] = (currentImages[productIndex] + 1) % total;
+    updateGallery(productIndex);
+  }
+
+  function previousImage(productIndex) {
+    const product = products[productIndex];
+    const color = product.colors[currentColors[productIndex]];
+    const total = color.images.length;
+    if (total <= 1) return;
+    currentImages[productIndex] = (currentImages[productIndex] - 1 + total) % total;
+    updateGallery(productIndex);
+  }
+
+  function goToImage(productIndex, imageIndex) {
+    currentImages[productIndex] = imageIndex;
+    updateGallery(productIndex);
+  }
+
+  function contactWhatsApp(productIndex) {
+
+    const product = products[productIndex];
+    const colorIndex = currentColors[productIndex];
+    const selectedColor = product.colors[colorIndex];
+    const name = product.name && product.name.trim().length > 0 ? product.name : "eurem Modell (siehe Bild)";
+
+    const message = `Hallo HENTORIST,
 
 ich interessiere mich für:
 
-${product.name}
+${name}
 
 Farbe: ${selectedColor.name}
+Preis lt. Website: ${product.price}
 
-Könnt ihr mir bitte den Preis und die Verfügbarkeit mitteilen?`;
+Könnt ihr mir bitte die Verfügbarkeit mitteilen?`;
 
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
 
-      const url =
-        `https://wa.me/${WHATSAPP_NUMBER}?text=${
-          encodeURIComponent(message)
-        }`;
+  }
 
+  function openGeneralWhatsApp() {
 
-      window.open(
-        url,
-        "_blank"
-      );
-
-    }
-
-
-
-    /* =====================================================
-       WHATSAPP — WUNSCHMODELL
-    ===================================================== */
-
-    function openGeneralWhatsApp() {
-
-      const message =
-        `Hallo FAST FASHION,
+    const message = `Hallo HENTORIST,
 
 ich suche ein bestimmtes Modell und möchte euch gerne ein Foto davon schicken.`;
 
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
 
-      const url =
-        `https://wa.me/${WHATSAPP_NUMBER}?text=${
-          encodeURIComponent(message)
-        }`;
+  }
 
+  document.addEventListener("DOMContentLoaded", () => {
 
-      window.open(
-        url,
-        "_blank"
-      );
+    products.forEach((_, productIndex) => {
 
-    }
+      const gallery = document.getElementById(`gallery-${productIndex}`);
+      let touchStartX = 0;
 
+      gallery.addEventListener("touchstart", (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
 
+      gallery.addEventListener("touchend", (e) => {
+        const touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) < 40) return;
+        if (diff > 0) nextImage(productIndex); else previousImage(productIndex);
+      }, { passive: true });
 
-    /* =====================================================
-       TOUCH / SWIPE
-    ===================================================== */
+    });
 
-    document.addEventListener(
-      "DOMContentLoaded",
-      () => {
+  });
 
-        products.forEach(
-          (_, productIndex) => {
-
-            const gallery =
-              document.getElementById(
-                `gallery-${productIndex}`
-              );
-
-
-            let touchStartX = 0;
-
-
-            gallery.addEventListener(
-              "touchstart",
-              (event) => {
-
-                touchStartX =
-                  event.changedTouches[0]
-                    .screenX;
-
-              },
-              {
-                passive: true
-              }
-            );
-
-
-            gallery.addEventListener(
-              "touchend",
-              (event) => {
-
-                const touchEndX =
-                  event.changedTouches[0]
-                    .screenX;
-
-
-                const difference =
-                  touchStartX -
-                  touchEndX;
-
-
-                if (
-                  Math.abs(difference) < 40
-                ) {
-
-                  return;
-
-                }
-
-
-                if (
-                  difference > 0
-                ) {
-
-                  nextImage(
-                    productIndex
-                  );
-
-                } else {
-
-                  previousImage(
-                    productIndex
-                  );
-
-                }
-
-              },
-              {
-                passive: true
-              }
-            );
-
-          }
-        );
-
-      }
-    );
-
-  </script>
+</script>
 
 </body>
 </html>
