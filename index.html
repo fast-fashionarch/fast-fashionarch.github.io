@@ -431,7 +431,7 @@
 
 <script>
 
-  const WHATSAPP_NUMBER = "+4915737409159";
+  const WHATSAPP_NUMBER = "4915737409159";
   const INSTAGRAM_HANDLE = "https://www.instagram.com/fast.fashion79/"; // hier deinen echten Instagram-Handle eintragen
 
   /* =====================================================
@@ -511,7 +511,7 @@
 
     const imagesHTML = selectedColor.images
       .map((image, imageIndex) => `
-        <img class="gallery-image" src="${image}" alt="${product.name || 'HENTORIST Modell'} — ${selectedColor.name} — Bild ${imageIndex + 1}" draggable="false">
+        <img class="gallery-image" src="${image}" alt="${product.name || 'Fastfashion Modell'} — ${selectedColor.name} — Bild ${imageIndex + 1}" draggable="false">
       `)
       .join("");
 
@@ -581,7 +581,7 @@
 
     track.innerHTML = color.images
       .map((image, imageIndex) => `
-        <img class="gallery-image" src="${image}" alt="${product.name || 'HENTORIST Modell'} — ${color.name} — Bild ${imageIndex + 1}" draggable="false">
+        <img class="gallery-image" src="${image}" alt="${product.name || 'Fastfashion Modell'} — ${color.name} — Bild ${imageIndex + 1}" draggable="false">
       `)
       .join("");
 
@@ -663,7 +663,7 @@
     const selectedColor = product.colors[colorIndex];
     const name = product.name && product.name.trim().length > 0 ? product.name : "eurem Modell (siehe Bild)";
 
-    const message = `Hallo HENTORIST,
+    const message = `Hallo,
 
 ich interessiere mich für:
 
@@ -681,7 +681,7 @@ Könnt ihr mir bitte die Verfügbarkeit mitteilen?`;
 
   function openGeneralWhatsApp() {
 
-    const message = `Hallo HENTORIST,
+    const message = `Hallo,
 
 ich suche ein bestimmtes Modell und möchte euch gerne ein Foto davon schicken.`;
 
